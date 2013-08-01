@@ -1,0 +1,133 @@
+body {
+    width: 960px;
+    height: 640px;
+    position: relative;
+}
+
+.land {
+    fill: rgba(0.3,0.3,0.3,1);
+}
+
+.pboundary {
+    fill: none;
+    stroke: black;
+    stroke-opacity: 0.5;
+    stroke-width: 1px;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.ctboundary {
+    fill: none;
+    stroke: black;
+    stroke-opacity: 0.5;
+    stroke-width: 1px;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.cboundary {
+    fill: none;
+    stroke: white;
+    stroke-width: 1px;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.cboundary.zoomed {
+    stroke-width: 10px;
+}
+
+.pboundary.zoomed {
+    stroke: white;
+    stroke-opacity: 1 !important;
+    stroke-width: 8px;
+}
+
+.lboundary {
+    fill: none;
+    stroke: white;
+    stroke-width: 2px;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.dbl {
+    stroke-width: 2px;
+}
+
+.country, .province, .county {
+    fill: grey;
+    stroke: none;
+}
+
+.sea {
+    fill: blue;
+    stroke: none;
+    opacity: 0.08;
+}
+
+svg {
+    overflow: hidden;
+}
+
+.hidden {
+    fill-opacity:0;
+    stroke-opacity:0;
+}
+
+.backgrounded {
+    fill:rgba(182,182,182,1) !important;
+}
+
+.minus {
+    cursor:pointer;
+}
+.minus .box {
+    fill: #30435a;
+    stroke: #587a95;
+    stroke-width:1px;
+    shape-rendering: crispEdges;
+}
+
+.minus .sign {
+    fill: white;
+    stroke: none;
+    shape-rendering: crispEdges;
+}
+
+.minus .world {
+    fill: white;
+    stroke: none;
+}
+
+.mapToolTip rect {
+    fill: white;
+    fill-opacity:0.9;
+    stroke-opacity: 1;
+    stroke-width: 1px;
+    stroke: #999;
+    shape-rendering: crispEdges;
+    pointer-events:none;
+}
+.mapToolTip text {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size:10px;
+    font-weight: bold;
+    pointer-events:none;
+}
+
+.key text {
+    fill: #333;
+    line-height:20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+}
+.key line {
+    stroke: #333;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+}
+.key .keyTitle {
+    font-weight:bold;
+}

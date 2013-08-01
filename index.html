@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <title>World map</title>
+    <script type="text/javascript" src="libs/d3.v3.js"></script>
+    <script type="text/javascript" src="libs/d3.geo.projection.v0.min.js"></script>
+    <script type="text/javascript" src="libs/topojson.v1.min.js"></script>
+    <script type="text/javascript" src="critter-world-map.js"></script>
+    <link rel="stylesheet" type="text/css" href="critter-world-map.css" />
+</head>
+<body>
+<h1>Test map: </h1>
+<script>
+    //var width = 960, height = 512;
+    var width = 500, height = 250;
+
+    var colors = d3.scale.ordinal()
+            .range(["#bae4b3","#74c476","#31a354","#006d2c"]);
+
+    var intervalMS = function(d) {
+        return d3.format(",.0f")(d) + ' ms';
+    };
+    var intervalSeconds = function(d) {
+        return d3.format(",.1f")(d / 1000) + ' s';
+    };
+    var interval = function(d) {
+        if (d == 0) {
+            return 0;
+        }
+        if (d > 999) {
+            return intervalSeconds(d);
+        }
+        return intervalMS(d);
+    };
+
+    function updateTitle(type, name) {
+        d3.select('h1').text(name);
+    }
+
+    var map = worldmap()
+            .width(width)
+            .height(height)
+            .colors(colors)
+            .topojsonPrefix('/topojson')
+            .keyTitle('Avg Latency')
+            .toolTipTitle('Avg Latency')
+            .format(interval)
+            .onZoom(updateTitle)
+            .zoomDataPreloader(function(type,id,name,callback) {
+                console.log('preload data for ',type,id);
+            })
+            .zoomDataLoader(function(type,id,name,callback) {
+                setTimeout(function() {
+                    console.log('load data for ',type,id,name);
+                    if (id == 'GB') {
+                        return callback && callback(id, {
+                            'GBR-2042' : 42,
+                            'GBR-2317' : 21,
+                            'GBR-2755' : 103
+                        });
+                    } else if (id == 'BE') {
+                        return callback && callback(id, {
+                            'BEL-3479' : 108,
+                            'BEL-3478' : 209,
+                            'BEL-2' : 699
+                        });
+                    } else if (type=='province' && id == 'CA') {
+                        return callback && callback(id, {
+                            '06075' : 108,
+                            '06081' : 209,
+                            '06087' : 699
+                        });
+                    } else if (id == null) {
+                        return callback && callback(id, {
+                            'GB' : 50,
+                            'US' : 209,
+                            'BE' : 699
+                        });
+                    } else {
+                        return callback && callback(id,null);
+                    }
+                },2000);
+            });
+
+    var svg = d3.select("body").append("svg").call(map);
+
+    d3.select(self.frameElement).style("height", height + "px");
+</script>
+</body>
+</html>

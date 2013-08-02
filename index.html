@@ -11,12 +11,22 @@
 </head>
 <body>
 <h1>Test map: </h1>
-<script>
+<select id='chooser'>
+    <option>latency</option>
+    <option>volume</option>
+</select>
+    <script>
     //var width = 960, height = 512;
     var width = 500, height = 250;
 
-    var colors = d3.scale.ordinal()
+    var colors1 = d3.scale.ordinal()
             .range(["#bae4b3","#74c476","#31a354","#006d2c"]);
+    var colors2 = d3.scale.ordinal()
+            .range([
+                "#ffffd4",
+                "#fed98e",
+                "#fe9929",
+                "#cc4c02"]);
 
     var intervalMS = function(d) {
         return d3.format(",.0f")(d) + ' ms';
@@ -34,6 +44,9 @@
         return intervalMS(d);
     };
 
+    var format1 = interval;
+    var format2 = d3.format("d");
+
     function updateTitle(type, name) {
         d3.select('h1').text(name);
     }
@@ -41,44 +54,76 @@
     var map = worldmap()
             .width(width)
             .height(height)
-            .colors(colors)
+            .colors(colors1)
             .topojsonPrefix('/topojson')
             .keyTitle('Avg Latency')
-            .toolTipTitle('Avg Latency')
+            .toolTipTitle('Latency')
+            .toolTipColor("#74c476")
             .format(interval)
             .onZoom(updateTitle)
-            .zoomDataPreloader(function(type,id,name,callback) {
+            .dataset(0)
+            .zoomDataPreloader(function(type,id,dataset,name,callback) {
                 console.log('preload data for ',type,id);
             })
-            .zoomDataLoader(function(type,id,name,callback) {
+            .zoomDataLoader(function(type,id,dataset,name,callback) {
                 setTimeout(function() {
-                    console.log('load data for ',type,id,name);
-                    if (id == 'GB') {
-                        return callback && callback(id, {
-                            'GBR-2042' : 42,
-                            'GBR-2317' : 21,
-                            'GBR-2755' : 103
-                        });
-                    } else if (id == 'BE') {
-                        return callback && callback(id, {
-                            'BEL-3479' : 108,
-                            'BEL-3478' : 209,
-                            'BEL-2' : 699
-                        });
-                    } else if (type=='province' && id == 'CA') {
-                        return callback && callback(id, {
-                            '06075' : 108,
-                            '06081' : 209,
-                            '06087' : 699
-                        });
-                    } else if (id == null) {
-                        return callback && callback(id, {
-                            'GB' : 50,
-                            'US' : 209,
-                            'BE' : 699
-                        });
+                    console.log('load data for ',type,id,name,dataset);
+                    if (dataset ==1) {
+                        if (id == 'GB') {
+                            return callback && callback(id, dataset, {
+                                'GBR-2042' : 42,
+                                'GBR-2317' : 21,
+                                'GBR-2755' : 103
+                            });
+                        } else if (id == 'BE') {
+                            return callback && callback(id, dataset, {
+                                'BEL-3479' : 108,
+                                'BEL-3478' : 209,
+                                'BEL-2' : 699
+                            });
+                        } else if (type=='province' && id == 'CA') {
+                            return callback && callback(id, dataset, {
+                                '06075' : 108,
+                                '06081' : 209,
+                                '06087' : 699
+                            });
+                        } else if (id == null) {
+                            return callback && callback(id, dataset, {
+                                'GB' : 50,
+                                'US' : 209,
+                                'BE' : 699
+                            });
+                        } else {
+                            return callback && callback(id,dataset,null);
+                        }
                     } else {
-                        return callback && callback(id,null);
+                        if (id == 'GB') {
+                            return callback && callback(id, dataset, {
+                                'GBR-2042' : 12,
+                                'GBR-2317' : 10,
+                                'GBR-2755' : 111
+                            });
+                        } else if (id == 'BE') {
+                            return callback && callback(id, dataset, {
+                                'BEL-3479' : 15,
+                                'BEL-3478' : 16,
+                                'BEL-2' : 18
+                            });
+                        } else if (type=='province' && id == 'CA') {
+                            return callback && callback(id, dataset, {
+                                '06075' : 444,
+                                '06081' : 222,
+                                '06087' : 111
+                            });
+                        } else if (id == null) {
+                            return callback && callback(id, dataset, {
+                                'GB' : 12,
+                                'US' : 15,
+                                'BE' : 42
+                            });
+                        } else {
+                            return callback && callback(id,dataset,null);
+                        }
                     }
                 },2000);
             });
@@ -86,6 +131,29 @@
     var svg = d3.select("body").append("svg").call(map);
 
     d3.select(self.frameElement).style("height", height + "px");
+
+    d3.select('#chooser').on('change',function() {
+         var target = d3.event.target;
+         var dataset = target.selectedIndex +1;
+         if (dataset == 1) {
+             map.colors(colors1)
+                     .keyTitle('Avg Latency')
+                     .toolTipTitle('Latency')
+                     .toolTipColor("#74c476")
+                     .format(format1)
+                     .dataset(1);
+         } else {
+             map.colors(colors2)
+                .keyTitle('Avg Volume')
+                .toolTipTitle('Volume')
+                .toolTipColor("#fed98e")
+                .format(format2)
+                .dataset(2);
+         }
+
+    });
+
 </script>
+
 </body>
 </html>

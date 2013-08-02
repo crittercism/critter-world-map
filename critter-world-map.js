@@ -5,7 +5,11 @@ function worldmap() {
         zoomDataLoader = null,
         zoomDataPreloader = null,
         keyTitle = '',
-        toolTipTitle = '', onZoom = null, topojsonPrefix = '';
+        toolTipTitle = '',
+        toolTipColor = '#999',
+        onZoom = null,
+        topojsonPrefix = '',
+        dataset=0;
 
     var projection = d3.geo.miller()
             .scale(width / (2*Math.PI)) // woolly rationale here...
@@ -68,7 +72,7 @@ function worldmap() {
         countries.style("pointer-events", "all").on("click", zoomToCountry).on("mousemove", mouseOverRegion).on("mouseout", mouseOutRegion);
 
         renderLoadingAnimation();
-        zoomDataLoader && zoomDataLoader('world',null,'Global',populateGlobalData);
+        zoomDataLoader && zoomDataLoader('world',null,dataset,'Global',populateGlobalData);
     }
 
     function renderCountry() {
@@ -185,7 +189,7 @@ function worldmap() {
             showMinusButton();
 
             onZoom && onZoom('country', zoomedRegionName());
-            zoomDataPreloader && zoomDataPreloader('country', iso_a2, zoomedRegionName());
+            zoomDataPreloader && zoomDataPreloader('country', iso_a2, dataset, zoomedRegionName());
 
             d3.json(topojsonPrefix+"/provinces/provinces_"+iso_a2+".json", function(error, ptopo) {
                 if (error) {
@@ -198,7 +202,7 @@ function worldmap() {
                     lastCountryZoom.topojson = ptopo;
                     renderCountry();
                     renderLoadingAnimation();
-                    zoomDataLoader && zoomDataLoader('country', iso_a2, zoomedRegionName(), populateProvinceData);
+                    zoomDataLoader && zoomDataLoader('country', iso_a2, dataset, zoomedRegionName(), populateProvinceData);
                 }
             });
 
@@ -231,7 +235,7 @@ function worldmap() {
             map.selectAll(".province").attr('class','province hidden');
 
             onZoom && onZoom('province', zoomedRegionName());
-            zoomDataPreloader && zoomDataPreloader('province', postal, zoomedRegionName());
+            zoomDataPreloader && zoomDataPreloader('province', postal, dataset, zoomedRegionName());
 
             d3.json(topojsonPrefix+"/counties/counties_"+postal.toLowerCase()+".json", function(error, ctopo) {
                 if (error) {
@@ -244,7 +248,7 @@ function worldmap() {
                     lastProvinceZoom.topojson = ctopo;
                     renderCounties();
                     renderLoadingAnimation();
-                    zoomDataLoader && zoomDataLoader('province', postal,  zoomedRegionName(), populateCountyData);
+                    zoomDataLoader && zoomDataLoader('province', postal, dataset, zoomedRegionName(), populateCountyData);
                 }
             });
         }
@@ -344,8 +348,10 @@ function worldmap() {
         }
     }
 
-    function populateGlobalData(id, values) {
-        if (values) {
+    // note the dataset check - dataset is changed when the map is re-populated
+    // and allows you to ignore callbacks from previous datasets
+    function populateGlobalData(id, d, values) {
+        if (values && d == dataset ) {
             globalZoom.data = values;
             setColorStyles('.country', 'iso_a2', values);
         } else {
@@ -353,8 +359,8 @@ function worldmap() {
         }
     }
 
-    function populateProvinceData(id, values) {
-        if (lastCountryZoom.id == id) {
+    function populateProvinceData(id, d, values) {
+        if (lastCountryZoom.id == id && d == dataset) {
             if (values) {
                 lastCountryZoom.data = values;
                 setColorStyles('.province', 'adm1_code', values);
@@ -364,8 +370,8 @@ function worldmap() {
         }
     }
 
-    function populateCountyData(id, values) {
-        if (lastProvinceZoom.id == id) {
+    function populateCountyData(id, d, values) {
+        if (lastProvinceZoom.id == id && d == dataset) {
             if (values) {
                 lastProvinceZoom.data = values;
                 setColorStyles('.county', 'FIPS', values);
@@ -399,7 +405,7 @@ function worldmap() {
         var e = d3.event, m = d3.mouse(svg.node()),
             target = d3.select(e.target),
             d = target.datum(), ttxoffset = 10, ttwidth,
-            flipped, x, name;
+            flipped, x, name, data;
 
         if (d.properties.name) {
             name = d.properties.name;
@@ -409,7 +415,23 @@ function worldmap() {
             name = 'Unknown region'; // wha?
         }
 
-        ttwidth = (name.length * 6) + 10;
+        function lookup(zoom, key) {
+            if (zoom && zoom.data && zoom.data && zoom.data.hasOwnProperty(key)) {
+                return toolTipTitle + ': ' +format(zoom.data[key]);
+            } else {
+                return toolTipTitle + ': No data';
+            }
+        }
+
+        if (d.properties.adm1_code) {
+            data = lookup(lastCountryZoom, d.properties.adm1_code);
+        } else if (d.properties.iso_a2) {
+            data = lookup(globalZoom, d.properties.iso_a2);
+        } else if (d.properties.FIPS) {
+            data = lookup(lastProvinceZoom, d.properties.FIPS);
+        }
+
+        ttwidth = (d3.max([name.length, data.length]) * 6) + 10;
         flipped = (m[0] + ttwidth + ttxoffset > width);
         x = flipped ? m[0]-ttwidth-ttxoffset : m[0] + ttxoffset;
 
@@ -428,6 +450,13 @@ function worldmap() {
             .attr("y", m[1] + 15)
             .attr("dy", ".35em")
             .text(name);
+
+        g.append("text")
+            .attr("x", x + 5)
+            .attr("y", m[1] + 15)
+            .attr("dy", "1.6em")
+            .attr('style','fill:'+toolTipColor)
+            .text(data);
     }
 
     function mouseOutRegion() {
@@ -579,13 +608,13 @@ function worldmap() {
             var angle = (Date.now() - start) * speed,
                 transform = function(d) { return 'translate('+(kw-30)/2+' '+((kh/2)+10)+') rotate(' + angle / radius + ')'; };
             c.attr("transform", transform);
-            return c[0].length == 0;
+            return c && c[0] && (c[0].length == 0);
         });
     }
 
     var load = my.load = function() {
         onZoom && onZoom('world', 'World');
-        zoomDataPreloader && zoomDataPreloader('world', null, 'World');
+        zoomDataPreloader && zoomDataPreloader('world', null, dataset, 'World');
 
         d3.json(topojsonPrefix+"/world.json", function(error, world) {
             if (error) {
@@ -598,7 +627,7 @@ function worldmap() {
     };
 
     /*******************************************************
-     * Boring setters and data hashes after this point:    *
+     * Boring setters, constants and data hashes after this point:    *
      *******************************************************/
 
     function my(selection){
@@ -654,6 +683,11 @@ function worldmap() {
         return my;
     }
 
+    my.toolTipColor = function(t) {
+        toolTipColor = t;
+        return my;
+    }
+
     my.onZoom = function(f) {
         onZoom = f;
         return my;
@@ -661,6 +695,22 @@ function worldmap() {
 
     my.topojsonPrefix = function(s) {
         topojsonPrefix = s;
+        return my;
+    }
+
+    my.dataset = function(n) {
+        dataset = n;
+        globalZoom.data == null;
+        zoomDataLoader && zoomDataLoader('world',null,dataset,'Global',populateGlobalData);
+        if (lastCountryZoom) {
+            lastCountryZoom.data == null;
+            zoomDataLoader && zoomDataLoader('country', lastCountryZoom.id, dataset, zoomedRegionName(), populateProvinceData);
+        }
+        if (lastProvinceZoom) {
+            lastProvinceZoom.data == null;
+            zoomDataLoader && zoomDataLoader('province', lastProvinceZoom.id, dataset, zoomedRegionName(), populateCountyData);
+        }
+        renderLoadingAnimation();
         return my;
     }
 

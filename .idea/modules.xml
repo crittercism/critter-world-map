@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/click-zoomable-map.iml" filepath="$PROJECT_DIR$/.idea/click-zoomable-map.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/critter-world-map.iml" filepath="$PROJECT_DIR$/.idea/critter-world-map.iml" />
     </modules>
   </component>
 </project>

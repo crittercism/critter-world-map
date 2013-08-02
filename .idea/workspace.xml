@@ -2,345 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" name="Default" comment="Baseline global choropleth map, with a lot of useful features.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries/ne_10m_admin_0_countries.dbf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries/ne_10m_admin_0_countries.shp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries/ne_10m_admin_0_countries.shx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries_lakes/ne_10m_admin_0_countries_lakes.dbf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries_lakes/ne_10m_admin_0_countries_lakes.shp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries_lakes/ne_10m_admin_0_countries_lakes.shx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_1_states_provinces_lakes_shp/ne_10m_admin_1_states_provinces_lakes_shp.dbf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_1_states_provinces_lakes_shp/ne_10m_admin_1_states_provinces_lakes_shp.shp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_1_states_provinces_lakes_shp/ne_10m_admin_1_states_provinces_lakes_shp.shx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_land/ne_10m_land.shp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_land/ne_10m_land.shx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_land_clip/ne_10m_land_clip.shp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_land_clip/ne_10m_land_clip.shx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_110m_admin_0_countries/ne_110m_admin_0_countries.dbf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_110m_admin_0_countries/ne_110m_admin_0_countries.shx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_50m_land/ne_50m_land.dbf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_50m_land/ne_50m_land.shp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_50m_land/ne_50m_land.shx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ak.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_al.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ar.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_az.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ca.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_co.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ct.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_dc.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_de.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_fl.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ga.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_hi.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ia.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_id.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_il.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_in.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ks.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ky.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_la.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ma.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_md.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_me.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_mi.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_mn.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_mo.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ms.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_mt.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_nc.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_nd.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ne.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_nh.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_nj.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_nm.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_nv.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ny.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_oh.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ok.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_or.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_pa.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ri.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_sc.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_sd.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_tn.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_tx.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_us.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_ut.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_va.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_vt.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_wa.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_wi.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_wv.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/counties/counties_wy.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/countries.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/critter-world-map.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/critter-world-map.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/d3.geo.projection.v0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/d3.v3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries/ne_10m_admin_0_countries.README.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries/ne_10m_admin_0_countries.VERSION.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries/ne_10m_admin_0_countries.prj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries_lakes/ne_10m_admin_0_countries_lakes.README.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries_lakes/ne_10m_admin_0_countries_lakes.VERSION.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_0_countries_lakes/ne_10m_admin_0_countries_lakes.prj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_1_states_provinces_lakes_shp/ne_10m_admin_1_states_provinces_lakes_shp.README.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_1_states_provinces_lakes_shp/ne_10m_admin_1_states_provinces_lakes_shp.VERSION.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_admin_1_states_provinces_lakes_shp/ne_10m_admin_1_states_provinces_lakes_shp.prj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_land/ne_10m_land.README.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_land/ne_10m_land.VERSION.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_land/ne_10m_land.dbf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_land/ne_10m_land.prj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_land_clip/ne_10m_land_clip.dbf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_land_clip/ne_10m_land_clip.prj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_10m_land_clip/ne_10m_land_clip.qpj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_110m_admin_0_countries/ne_110m_admin_0_countries.README.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_110m_admin_0_countries/ne_110m_admin_0_countries.VERSION.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_110m_admin_0_countries/ne_110m_admin_0_countries.prj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_50m_land/ne_50m_land.README.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_50m_land/ne_50m_land.VERSION.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/ne_50m_land/ne_50m_land.prj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AD.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AF.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AI.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AL.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AO.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AS.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AT.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AU.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AW.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AX.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_AZ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BA.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BB.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BD.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BF.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BH.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BI.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BJ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BN.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BO.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BS.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BT.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BW.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BY.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_BZ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CA.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CD.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CF.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CH.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CI.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CK.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CL.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CN.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CO.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CU.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CV.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CW.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CY.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_CZ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_DE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_DJ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_DK.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_DM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_DO.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_DZ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_EC.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_EE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_EG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_EH.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_ER.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_ES.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_ET.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_FI.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_FJ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_FK.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_FM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_FO.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_FR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GA.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GB.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GD.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GH.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GI.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GL.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GN.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GQ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GS.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GT.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GU.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GW.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_GY.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_HK.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_HM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_HN.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_HR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_HT.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_HU.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_ID.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_IE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_IL.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_IM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_IN.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_IQ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_IR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_IS.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_IT.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_JE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_JM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_JO.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_JP.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_KE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_KG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_KH.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_KI.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_KM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_KN.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_KP.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_KR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_KW.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_KY.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_KZ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_LA.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_LB.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_LC.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_LI.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_LK.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_LR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_LS.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_LT.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_LU.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_LV.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_LY.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MA.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MC.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MD.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_ME.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MF.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MH.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MK.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_ML.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MN.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MP.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MS.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MT.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MU.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MV.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MW.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MX.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MY.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_MZ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NA.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NC.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NF.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NI.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NL.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NO.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NP.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NU.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_NZ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_OM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PA.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PF.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PH.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PK.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PL.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PN.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PS.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PT.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PW.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_PY.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_QA.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_RO.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_RS.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_RU.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_RW.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SA.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SB.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SC.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SD.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SH.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SI.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SK.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SL.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SN.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SO.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SS.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_ST.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SV.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SX.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SY.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_SZ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TC.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TD.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TF.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TH.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TJ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TL.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TN.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TO.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TR.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TT.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TW.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_TZ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_UA.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_UG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_US.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_UY.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_UZ.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_VC.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_VE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_VG.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_VI.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_VN.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_VU.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_WF.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_WS.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_YE.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_ZA.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_ZM.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/provinces/provinces_ZW.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/topojson.v1.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/topomerge" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topojson/world.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/pete.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/click-zoomable-map.iml" afterPath="$PROJECT_DIR$/.idea/critter-world-map.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/critter-world-map.css" afterPath="$PROJECT_DIR$/critter-world-map.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/critter-world-map.js" afterPath="$PROJECT_DIR$/critter-world-map.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="click-zoomable-map.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375377894728" ignored="false" />
-    <file path="/index.html" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375312165443" ignored="false" />
+    <file path="/Dummy.txt" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375378385470" ignored="false" />
+    <file path="/index.html" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375403844413" ignored="false" />
     <file path="/countries.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1374174689867" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/LineGraphView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1374787670232" ignored="false" />
     <file path="/Makefile" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375311950252" ignored="false" />
@@ -354,6 +29,9 @@
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/README" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375122194624" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/shared/GraphUtils.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375215209908" ignored="false" />
     <file path="/.gitignore" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375377645320" ignored="false" />
+    <file path="/README.md" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375387205171" ignored="false" />
+    <file path="/critter-world-map.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375403532601" ignored="false" />
+    <file path="/critter-world-map.css" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375396613294" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -373,19 +51,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file leaf-file-name="critter-world-map.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/critter-world-map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="6" selection-start="551" selection-end="551" vertical-scroll-proportion="-8.75">
+            <state line="19" column="49" selection-start="562" selection-end="562" vertical-scroll-proportion="-10.961538">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="144" column="0" selection-start="5477" selection-end="5477" vertical-scroll-proportion="0.81054133">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="21" selection-start="89" selection-end="89" vertical-scroll-proportion="0.035545025">
+            <state line="4" column="0" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="51" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -394,16 +90,7 @@
       <file leaf-file-name="critter-world-map.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/critter-world-map.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="16" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="critter-world-map.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/critter-world-map.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="744" column="30" selection-start="26608" selection-end="26608" vertical-scroll-proportion="0.0">
+            <state line="134" column="0" selection-start="2071" selection-end="2071" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -444,6 +131,7 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitLogSettings">
@@ -461,16 +149,34 @@
         <option value="$PROJECT_DIR$/d3-world-map.css" />
         <option value="$PROJECT_DIR$/d3-world-map.js" />
         <option value="$PROJECT_DIR$/natural-earth/Makefile" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/critter-world-map.css" />
         <option value="$PROJECT_DIR$/critter-world-map.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="2560" />
-    <option name="height" value="1414" />
+    <option name="width" value="1440" />
+    <option name="height" value="874" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>CoffeeScript</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -498,17 +204,18 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="click-zoomable-map" />
+              <option name="myItemId" value="critter-world-map" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="click-zoomable-map" />
+              <option name="myItemId" value="critter-world-map" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -518,7 +225,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="click-zoomable-map" />
+              <option name="myItemId" value="critter-world-map" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -532,7 +239,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="click-zoomable-map" />
+              <option name="myItemId" value="critter-world-map" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -546,17 +253,16 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.lastSelected" value="project.scopes" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -637,13 +343,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="2560" height="1414" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="874" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21324399" sideWeight="0.80901855" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21312632" sideWeight="0.80901855" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -727,14 +433,19 @@
       <option name="time" value="1" />
     </breakpoint-manager>
   </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="click-zoomable-map" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="critter-world-map" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/critter-world-map.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="16" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/critter-world-map.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="573" column="30" selection-start="22018" selection-end="22018" vertical-scroll-proportion="0.0">
@@ -812,34 +523,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="51" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/critter-world-map.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="16" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.0">
+        <state line="134" column="0" selection-start="2071" selection-end="2071" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/critter-world-map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="744" column="30" selection-start="26608" selection-end="26608" vertical-scroll-proportion="0.0">
+        <state line="19" column="49" selection-start="562" selection-end="562" vertical-scroll-proportion="-10.961538">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="6" selection-start="551" selection-end="551" vertical-scroll-proportion="-8.75">
+        <state line="144" column="0" selection-start="5477" selection-end="5477" vertical-scroll-proportion="0.81054133">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="21" selection-start="89" selection-end="89" vertical-scroll-proportion="0.035545025">
-          <folding />
-        </state>
-      </provider>
-    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
 

@@ -34,8 +34,12 @@ world.json:
 	ogr2ogr -f 'GeoJSON' -where "admin != ('Antarctica')" geojson/countries/ne_10m_countries_geojson.json ne_10m_admin_0_countries_lakes/ne_10m_admin_0_countries_lakes.shp
 	ogr2ogr -f 'GeoJSON' -clipsrc ne_10m_land_clip/ne_10m_land_clip.shp geojson/ne_10m_land_geojson.json ne_10m_land/ne_10m_land.shp
 	topojson --cartesian -q 1e5 --simplify-proportion 0.10 -p name,iso_a2,postal --id-property=+iso_a2 -- countries=geojson/countries/ne_10m_countries_geojson.json land=geojson/ne_10m_land_geojson.json | ./topomerge land > topojson/world.json
+    # The world needs to be less detailed if you view it in Firefox, which has crappier performance for now. See bug https://bugzilla.mozilla.org/show_bug.cgi?id=754644.
+	topojson --cartesian -q 1e5 --simplify-proportion 0.04 -p name,iso_a2,postal --id-property=+iso_a2 -- countries=geojson/countries/ne_10m_countries_geojson.json land=geojson/ne_10m_land_geojson.json | ./topomerge land > topojson/world-moz.json
 	cp topojson/world.json ../topojson
+	cp topojson/world-moz.json ../topojson
 	du -sh topojson/world.json
+	du -sh topojson/world-moz.json
 
 clean:
 	rm -rf topojson geojson shp node_modules

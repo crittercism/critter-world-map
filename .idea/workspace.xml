@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" name="Default" comment="Baseline global choropleth map, with a lot of useful features.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/pete.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/click-zoomable-map.iml" afterPath="$PROJECT_DIR$/.idea/critter-world-map.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+    <list default="true" id="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/d3.geo.projection.miller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/natural-earth/Makefile" afterPath="$PROJECT_DIR$/natural-earth/Makefile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/critter-world-map.css" afterPath="$PROJECT_DIR$/critter-world-map.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/critter-world-map.js" afterPath="$PROJECT_DIR$/critter-world-map.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/d3.v3.js" afterPath="$PROJECT_DIR$/libs/d3.v3.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="click-zoomable-map.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375378385470" ignored="false" />
-    <file path="/index.html" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375403844413" ignored="false" />
+    <file path="/Dummy.txt" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375829905487" ignored="false" />
+    <file path="/index.html" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375485761691" ignored="false" />
     <file path="/countries.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1374174689867" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/LineGraphView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1374787670232" ignored="false" />
-    <file path="/Makefile" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375311950252" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/LineGraphView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375481216576" ignored="false" />
+    <file path="/Makefile" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375748457134" ignored="false" />
     <file path="/d3-world-map.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375314173546" ignored="false" />
     <file path="/d3-world-map.css" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375304798898" ignored="false" />
     <file path="/fragment.js2" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375221030837" ignored="false" />
@@ -26,12 +27,39 @@
     <file path="/d3montecarlo.html" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1374881242961" ignored="false" />
     <file path="$PROJECT_DIR$/../d3playground/public/javascripts/latencyGraph.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1374870931251" ignored="false" />
     <file path="/README" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375122194624" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/README" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375122194624" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/README" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375481216576" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/shared/GraphUtils.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375215209908" ignored="false" />
     <file path="/.gitignore" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375377645320" ignored="false" />
     <file path="/README.md" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375387205171" ignored="false" />
-    <file path="/critter-world-map.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375403532601" ignored="false" />
-    <file path="/critter-world-map.css" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375396613294" ignored="false" />
+    <file path="/critter-world-map.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375830423675" ignored="false" />
+    <file path="/critter-world-map.css" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375828970820" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/lib/critter-world-map.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375829864392" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/lib/d3.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375487364417" ignored="false" />
+    <file path="/d3.geo.projection.miller.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375748606570" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/lib/d3.geo.projection.miller.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375828934108" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/routers/AppRouter.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375493614623" ignored="false" />
+    <file path="/AppRouter.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375493610266" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/location/LocationView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375503089859" ignored="false" />
+    <file path="/LocationView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375502863408" ignored="false" />
+    <file path="/Location._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375505267464" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/templates/Location._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375505271170" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/location/MapView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375736756870" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/templates/Map._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375502768052" ignored="false" />
+    <file path="/Map._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375502454972" ignored="false" />
+    <file path="/MapView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375504970029" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/style.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375504042417" ignored="false" />
+    <file path="/style.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375504042417" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/lib/topojson.v1.min.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375503665156" ignored="false" />
+    <file path="/topojson.v1.min.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375503658331" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/critter-world-map.css" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375503836827" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/NavView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375736853164" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/fonts.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375740960626" ignored="false" />
+    <file path="/fonts.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375740951002" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/navbars.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375739137317" ignored="false" />
+    <file path="/navbars.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375739135805" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/AppView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375812290368" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/critter-world-map.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375814972810" ignored="false" />
+    <file path="/critter-world-map.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375814973653" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,19 +79,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="critter-world-map.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/critter-world-map.js">
+      <file leaf-file-name="d3.v3.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libs/d3.v3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="49" selection-start="562" selection-end="562" vertical-scroll-proportion="-10.961538">
+            <state line="5149" column="28" selection-start="179032" selection-end="179032" vertical-scroll-proportion="-1.3076923">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="d3.geo.projection.miller.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libs/d3.geo.projection.miller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="54" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="d3.geo.projection.v0.min.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libs/d3.geo.projection.v0.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="44" selection-start="32054" selection-end="32054" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="critter-world-map.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/critter-world-map.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="375" column="101" selection-start="13401" selection-end="13401" vertical-scroll-proportion="0.5595777">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Makefile" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/natural-earth/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="108" selection-start="2913" selection-end="2913" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="0" selection-start="5477" selection-end="5477" vertical-scroll-proportion="0.81054133">
+            <state line="28" column="75" selection-start="978" selection-end="978" vertical-scroll-proportion="-17.5">
               <folding />
             </state>
           </provider>
@@ -90,25 +154,7 @@
       <file leaf-file-name="critter-world-map.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/critter-world-map.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="0" selection-start="2071" selection-end="2071" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Makefile" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/natural-earth/Makefile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="2427" selection-end="2427" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="countries.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/natural-earth/countries.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="337" selection-end="337" vertical-scroll-proportion="0.0">
+            <state line="84" column="114" selection-start="1221" selection-end="1221" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -117,7 +163,7 @@
       <file leaf-file-name="world.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/topojson/world.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="519072" selection-end="519072" vertical-scroll-proportion="0.0">
+            <state line="1" column="0" selection-start="519072" selection-end="519072" vertical-scroll-proportion="-0.625">
               <folding />
             </state>
           </provider>
@@ -148,19 +194,23 @@
         <option value="$PROJECT_DIR$/d3.v3.js" />
         <option value="$PROJECT_DIR$/d3-world-map.css" />
         <option value="$PROJECT_DIR$/d3-world-map.js" />
-        <option value="$PROJECT_DIR$/natural-earth/Makefile" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/critter-world-map.css" />
-        <option value="$PROJECT_DIR$/critter-world-map.js" />
+        <option value="$PROJECT_DIR$/libs/d3.v3.js" />
+        <option value="$PROJECT_DIR$/libs/d3.geo.projection.dymaxion.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/natural-earth/Makefile" />
+        <option value="$PROJECT_DIR$/critter-world-map.css" />
+        <option value="$PROJECT_DIR$/libs/d3.geo.projection.miller.js" />
+        <option value="$PROJECT_DIR$/critter-world-map.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="95" />
     <option name="y" value="22" />
-    <option name="width" value="1440" />
-    <option name="height" value="874" />
+    <option name="width" value="2270" />
+    <option name="height" value="1315" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -259,7 +309,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="project.scopes" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../d3playground" />
     <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -343,14 +393,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="874" extended-state="6" />
-    <editor active="false" />
+    <frame x="95" y="22" width="2270" height="1315" extended-state="6" />
+    <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5615063" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21312632" sideWeight="0.80901855" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13440143" sideWeight="0.43849373" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -358,11 +411,8 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56233424" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -407,7 +457,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Baseline global choropleth map, with a lot of useful features." />
+    <option name="LAST_COMMIT_MESSAGE" value="Several firefox fixes, including a simplified world map." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -427,6 +477,7 @@
     <MESSAGE value="Add province zoom" />
     <MESSAGE value="add tweaks for some rogue states." />
     <MESSAGE value="Baseline global choropleth map, with a lot of useful features." />
+    <MESSAGE value="Several firefox fixes, including a simplified world map." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -446,20 +497,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/critter-world-map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="573" column="30" selection-start="22018" selection-end="22018" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/natural-earth/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="38" selection-start="2410" selection-end="2410" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/natural-earth/countries.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="337" selection-end="337" vertical-scroll-proportion="0.0">
@@ -488,37 +525,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/topojson/world.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="519072" selection-end="519072" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/d3.geo.projection.v0.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="20" selection-start="32030" selection-end="32030" vertical-scroll-proportion="0.011971269">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/natural-earth/countries.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="337" selection-end="337" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/d3.v3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1319" column="89" selection-start="45214" selection-end="45214" vertical-scroll-proportion="0.3577832">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/natural-earth/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="2427" selection-end="2427" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -537,23 +546,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/critter-world-map.css">
+    <entry file="file://$PROJECT_DIR$/libs/d3.v3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="0" selection-start="2071" selection-end="2071" vertical-scroll-proportion="0.0">
+        <state line="5149" column="28" selection-start="179032" selection-end="179032" vertical-scroll-proportion="-1.3076923">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/critter-world-map.js">
+    <entry file="file://$PROJECT_DIR$/topojson/world.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="49" selection-start="562" selection-end="562" vertical-scroll-proportion="-10.961538">
+        <state line="1" column="0" selection-start="519072" selection-end="519072" vertical-scroll-proportion="-0.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/natural-earth/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="108" selection-start="2913" selection-end="2913" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="0" selection-start="5477" selection-end="5477" vertical-scroll-proportion="0.81054133">
+        <state line="28" column="75" selection-start="978" selection-end="978" vertical-scroll-proportion="-17.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/d3.geo.projection.v0.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="44" selection-start="32054" selection-end="32054" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/critter-world-map.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="114" selection-start="1221" selection-end="1221" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/d3.geo.projection.miller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="54" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/critter-world-map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="375" column="101" selection-start="13401" selection-end="13401" vertical-scroll-proportion="0.5595777">
           <folding />
         </state>
       </provider>

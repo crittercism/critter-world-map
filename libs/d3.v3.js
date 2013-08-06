@@ -8764,5 +8764,6 @@ d3 = function() {
   d3.xml = d3_xhrType(function(request) {
     return request.responseXML;
   });
-  return d3;
+
+    return d3;
 }();

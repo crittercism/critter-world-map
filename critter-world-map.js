@@ -1,3 +1,10 @@
+/**
+ * Note that this file lives in the critter-world-map github repo. If found
+ * elsewhere, it is a copy and you should make sure changes will go back
+ * there, which will help us if we want to use this map in blog posts, marketing
+ * material or open source it.
+ */
+
 function worldmap() {
     var width = 960,
         height = 640,
@@ -9,13 +16,14 @@ function worldmap() {
         toolTipColor = '#999',
         onZoom = null,
         topojsonPrefix = '',
-        dataset=0;
+        dataset=0,
+        firefox=navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
     var projection = d3.geo.miller()
-            .scale(width / (2*Math.PI)) // woolly rationale here...
-            .translate([width / 2, height * 1.25 / 2])
-            .precision(5)
-            .rotate([-10,0,0]);
+        .scale(width / (2*Math.PI)) // woolly rationale here...
+        .translate([width / 2, height * 1.25 / 2])
+        .precision(5)
+        .rotate([-10,0,0]);
 
     var colors = d3.scale.category20();
     var format = d3.format("d");
@@ -27,8 +35,6 @@ function worldmap() {
     var path = d3.geo.path()
         .projection(projection);
 
-    var provinceDisplay = 6;
-
     var currentZoom = null;
     var globalZoom = {
         translation: [0,0],
@@ -39,10 +45,11 @@ function worldmap() {
 
     function renderWorld() {
         var w = globalZoom.topojson;
-        var sea = svg.append('rect').attr('class','sea').attr('x',0).attr('y',0).attr('width',width).attr('height',height);
-        sea.style("pointer-events", "all").on("click", zoomOut);
+        var sea = svg.append('rect').classed('sea',true).attr('x',0).attr('y',0).attr('width',width).attr('height',height);
 
-        map = svg.append('g').attr('class','map');
+        sea.style("pointer-events", "all").on('click',zoomOut);
+
+        map = svg.append('g').classed('map',true);
 
         renderKeyArea();
 
@@ -51,28 +58,47 @@ function worldmap() {
         // trace the outline of the land
         map.insert("path", ".lboundary")
             .datum(topojson.mesh(w, w.objects.land))
-            .attr("class", "lboundary land")
+            .classed('lboundary',true)
+            .classed('land',true)
             .attr("d", path);
 
         // draw all the countries
-        var countries = map.selectAll(".country")
+        map.selectAll(".country")
             .data(countryGeo.features)
             .enter().append('path')
-            .attr("class", "country")
+            .classed('country',true)
             .attr("d", function(t) {
                 return path(t);
-            });
+            }).style('pointer-events','all');
 
         // draw boundaries between countries
         map.insert("path", ".cboundary")
             .datum(topojson.mesh(w, w.objects.countries, function(a, b) { return a !== b; }))
-            .attr("class", "cboundary")
+            .classed('cboundary',true)
             .attr("d", path).style('pointer-events','none');
 
-        countries.style("pointer-events", "all").on("click", zoomToCountry).on("mousemove", mouseOverRegion).on("mouseout", mouseOutRegion);
+        map.on("click", zoomRouter).on("mousemove", mouseOverRegion).on("mouseout", mouseOutRegion);
 
         renderLoadingAnimation();
         zoomDataLoader && zoomDataLoader('world',null,dataset,'Global',populateGlobalData);
+    }
+
+    function zoomRouter() {
+        var e = d3.event,
+            target = d3.select(e.target),
+            d = target.datum();
+
+        if (target.classed('country')) {
+            zoomToCountry();
+        } else if (target.classed('province')) {
+            if (d.properties.iso_a2 && d.properties.iso_a2 == 'US') {
+                zoomToProvince();
+            } else {
+                extraZoom();
+            }
+        } else if (target.classed('county')) {
+            extraZoom();
+        }
     }
 
     function renderCountry() {
@@ -82,7 +108,8 @@ function worldmap() {
         map.selectAll(".cboundary.zoomed").remove();
         map.insert("path", ".cboundary")
             .datum(topojson.mesh(provincesTopojson, provincesTopojson.objects.countries))
-            .attr("class", "cboundary zoomed")
+            .classed('cboundary',true)
+            .classed('zoomed',true)
             .attr("d", path).style('pointer-events', 'none');
 
         var provinceGeo = topojson.feature(provincesTopojson, provincesTopojson.objects.provinces);
@@ -92,10 +119,10 @@ function worldmap() {
         var provinces = map.selectAll(".province")
             .data(provinceGeo.features)
             .enter().append('path')
-            .attr("class", "province")
+            .classed('province',true)
             .attr("d",function (t) {
                 return path(t);
-            }).attr("clip-path", "url(#pClip)");
+            });
 
         // draw boundaries between provinces
         map.selectAll(".pboundary").remove();
@@ -103,59 +130,53 @@ function worldmap() {
             .datum(topojson.mesh(provincesTopojson, provincesTopojson.objects.provinces, function (a, b) {
                 return a !== b;
             }))
-            .attr("class", "pboundary")
+            .classed('pboundary',true)
             .attr("d", path).style('pointer-events', 'none');
 
         map.selectAll('#pClip').remove();
         if (iso_a2 == 'TZ') { // add a clipping path by the country outline... to fix tanzania's 'problem'
+            provinces.attr("clip-path", "url(#pClip)");
             map.append("defs").append("clipPath")
                 .attr("id", "pClip")
                 .append("path")
                 .datum(topojson.mesh(provincesTopojson, provincesTopojson.objects.countries))
                 .attr("d", path).style('pointer-events', 'none');
         }
-
-        if (iso_a2 == 'US') {
-            // enable event handlers for us states
-            provinces.style("pointer-events", "all")
-                .on("click", zoomToProvince)
-                .on("mousemove", mouseOverRegion).on("mouseout", mouseOutRegion);
-        } else {
-            provinces.style("pointer-events", "all").on("click", extraZoom)
-                .on("mousemove", mouseOverRegion).on("mouseout", mouseOutRegion);
-        }
+        provinces.style("pointer-events", "all").attr('pointer-events','all');
     }
 
     function renderCounties() {
         var countiesTopojson = lastProvinceZoom.topojson;
 
+        // draw a refined state outline
         var stateGeo = topojson.feature(countiesTopojson, countiesTopojson.objects.states);
         var state = stateGeo.features[0];
         map.append("path")
             .datum(state)
-            .attr("class", "pboundary zoomed")
+            .classed('pboundary',true)
+            .classed('zoomed',true)
             .attr("d", path).style('pointer-events', 'none');
 
+        // draw the counties.
         var countyGeo = topojson.feature(countiesTopojson, countiesTopojson.objects.counties);
         map.selectAll(".county").remove();
         // draw all the provinces
         map.selectAll(".county")
             .data(countyGeo.features)
             .enter().append('path')
-            .attr("class", "county")
+            .classed('county',true)
             .attr("d",function (t) {
                 return path(t);
             }).style("pointer-events", "all")
             .attr('style',function(d) {
                 // hack to not turn the sea within the county boundary grey...
-                // it does exist as a shape in the shapefile, but not
+                // it does exist as a shape in the shapefile, but does not have \
+                // a county name.
                 if (!d.properties.COUNTY) {
                     return 'fill:none';
                 }
                 return '';
-            })
-            .on("click", extraZoom)
-            .on("mousemove", mouseOverRegion).on("mouseout", mouseOutRegion);
+            });
 
         // draw boundaries between provinces
         map.selectAll(".ctboundary").remove();
@@ -163,12 +184,12 @@ function worldmap() {
             .datum(topojson.mesh(countiesTopojson, countiesTopojson.objects.counties, function (a, b) {
                 return a !== b;
             }))
-            .attr("class", "ctboundary")
+            .classed('ctboundary',true)
             .attr("d", path).style('pointer-events', 'none');
     }
 
     function zoomToCountry() {
-        var e = d3.event, m = d3.mouse(svg.node()),
+        var e = d3.event,
             target = d3.select(e.target),
             d = target.datum(), iso_a2, name;
 
@@ -208,8 +229,8 @@ function worldmap() {
 
         } else {
             console.log('no iso_a2 found', d, e);
-        };
-    };
+        }
+    }
 
 
     /**
@@ -218,9 +239,9 @@ function worldmap() {
      * In the future, we may need to do something similar for Australia, Canada and other states.
      */
     function zoomToProvince() {
-        var e = d3.event, m = d3.mouse(svg.node()),
+        var e = d3.event,
             target = d3.select(e.target),
-            d = target.datum(), postal, bounds, i, name;
+            d = target.datum(), postal, i, name;
 
         if (d && d.properties && d.properties.postal) {
             postal = d.properties.postal;
@@ -232,7 +253,7 @@ function worldmap() {
 
             map.selectAll(".cboundary.zoomed").remove();
             map.selectAll(".pboundary.zoomed").remove();
-            map.selectAll(".province").attr('class','province hidden');
+            map.selectAll(".province").classed('mhidden',true);
 
             onZoom && onZoom('province', zoomedRegionName());
             zoomDataPreloader && zoomDataPreloader('province', postal, dataset, zoomedRegionName());
@@ -255,7 +276,7 @@ function worldmap() {
     }
 
     function extraZoom() {
-        var e = d3.event, m = d3.mouse(svg.node()),
+        var e = d3.event,
             target = d3.select(e.target),
             d = target.datum(), bounds, fips, adm1_code;
 
@@ -265,7 +286,7 @@ function worldmap() {
                 zoom(ROGUE_US_COUNTIES, fips, 0.3);
             } else if (d.properties.adm1_code) {
                 adm1_code = d.properties.adm1_code;
-                zoom(ROGUE_PROVINCES_BY_ADM1_CODE, fips, 0.3);
+                zoom(ROGUE_PROVINCES_BY_ADM1_CODE, adm1_code, 0.3);
             }
         }
     }
@@ -290,7 +311,7 @@ function worldmap() {
             map.selectAll(".county").remove();
             map.selectAll(".ctboundary").remove();
             map.selectAll(".pboundary.zoomed").remove();
-            map.selectAll(".cboundary").attr('class','cboundary');
+            map.selectAll(".cboundary").classed('zoomed',false);
 
             // re-render the country selection and data
             renderCountry();
@@ -322,8 +343,8 @@ function worldmap() {
         map.selectAll(".pboundary").remove();
         map.selectAll(".ctboundary").remove();
         map.selectAll(".cboundary.zoomed").remove();
-        map.selectAll(".country").attr('class','country');
-        map.selectAll(".cboundary").attr('class','cboundary');
+        map.selectAll(".country").classed('zoomed',false);
+        map.selectAll(".cboundary").classed('zoomed',false);
 
         // re-render global data
         if (globalZoom.data) {
@@ -346,6 +367,7 @@ function worldmap() {
         if (lastCountryZoom) {
             return lastCountryZoom.name;
         }
+        return '';
     }
 
     // note the dataset check - dataset is changed when the map is re-populated
@@ -360,7 +382,7 @@ function worldmap() {
     }
 
     function populateProvinceData(id, d, values) {
-        if (lastCountryZoom.id == id && d == dataset) {
+        if (lastCountryZoom && lastCountryZoom.id == id && d == dataset) {
             if (values) {
                 lastCountryZoom.data = values;
                 setColorStyles('.province', 'adm1_code', values);
@@ -371,7 +393,7 @@ function worldmap() {
     }
 
     function populateCountyData(id, d, values) {
-        if (lastProvinceZoom.id == id && d == dataset) {
+        if (lastProvinceZoom && lastProvinceZoom.id == id && d == dataset) {
             if (values) {
                 lastProvinceZoom.data = values;
                 setColorStyles('.county', 'FIPS', values);
@@ -407,6 +429,10 @@ function worldmap() {
             d = target.datum(), ttxoffset = 10, ttwidth,
             flipped, x, name, data;
 
+        if (!d.properties) {
+            return;
+        }
+
         if (d.properties.name) {
             name = d.properties.name;
         } else if (d.properties.COUNTY) {
@@ -437,11 +463,11 @@ function worldmap() {
 
         svg.selectAll(".mapToolTip").remove();
         var g = svg.append("g")
-            .attr('class', 'mapToolTip');
+            .classed('mapToolTip',true);
 
         g.append('rect')
             .attr('width',ttwidth)
-            .attr('height', '2em')
+            .attr('height', '33')
             .attr("x", x)
             .attr("y", m[1]+5);
 
@@ -455,14 +481,15 @@ function worldmap() {
             .attr("x", x + 5)
             .attr("y", m[1] + 15)
             .attr("dy", "1.6em")
-            .attr('style','fill:'+toolTipColor)
+            .style('fill',toolTipColor)
             .text(data);
+
+        d3.event.stopPropagation();
     }
 
     function mouseOutRegion() {
         svg.selectAll(".mapToolTip").remove();
     }
-
 
     function isPointInBounds(bounds, p) {
         var bottomLeft = projection(bounds[0]), topRight = projection(bounds[1]),
@@ -543,7 +570,7 @@ function worldmap() {
 
     function renderKeyArea() {
         var r = quantize.range(),
-            i, label, l  = r.length, kw = 125, kh = ((l - 1)*20) + 75;
+            l  = r.length, kw = 125;
         var key = svg.append('g').attr('class','key').attr('transform','translate('+0+','+(height - (colors.range().length * 20 + 55))+')');
         key.append('rect').attr('x',0).attr('y',0).attr('height',kh).attr('width',kw).attr('style','fill:white; fill-opacity:0.7');
     }
@@ -551,7 +578,7 @@ function worldmap() {
     function renderKey() {
         var d = quantize.domain(),
             r = quantize.range(),
-            n = Math.round((d[1] - d[0])/r.length), i, label, l  = r.length, kw = 125, kh = ((l - 1)*20) + 75;
+            n = Math.round((d[1] - d[0])/r.length), i, label, l  = r.length, kw = 125;
 
         var key = d3.select('.key');
         key.selectAll('.keyContainer').remove();
@@ -572,7 +599,7 @@ function worldmap() {
     function renderMissingDataKey() {
         var d = quantize.domain(),
             r = quantize.range(),
-            n = Math.round((d[1] - d[0])/r.length), i, label, l  = r.length, kw = 125, kh = ((l - 1)*20) + 75;
+            l  = r.length, kw = 125;
         var key = d3.select('.key');
         key.selectAll('.keyContainer').remove();
         var container = key.append('g').attr('transform','translate(15 0)').attr('class','keyContainer');
@@ -606,7 +633,7 @@ function worldmap() {
         d3.timer(function() {
             var c = key.selectAll('.anim');
             var angle = (Date.now() - start) * speed,
-                transform = function(d) { return 'translate('+(kw-30)/2+' '+((kh/2)+10)+') rotate(' + angle / radius + ')'; };
+                transform = function() { return 'translate('+(kw-30)/2+' '+((kh/2)+10)+') rotate(' + angle / radius + ')'; };
             c.attr("transform", transform);
             return c && c[0] && (c[0].length == 0);
         });
@@ -615,8 +642,10 @@ function worldmap() {
     var load = my.load = function() {
         onZoom && onZoom('world', 'World');
         zoomDataPreloader && zoomDataPreloader('world', null, dataset, 'World');
-
-        d3.json(topojsonPrefix+"/world.json", function(error, world) {
+        // For the moment, we have a different view of the world for Firefox users
+        // They can't handle the polygons of the real world:
+        var json = firefox ? '/world-moz.json' : '/world.json';
+        d3.json(topojsonPrefix+json, function(error, world) {
             if (error) {
                 console.log(error);
                 return;
@@ -655,64 +684,64 @@ function worldmap() {
     my.zoomDataLoader = function(loader) {
         zoomDataLoader = loader;
         return my;
-    }
+    };
 
     my.zoomDataPreloader = function(loader) {
         zoomDataPreloader = loader;
         return my;
-    }
+    };
 
     my.colors = function(c) {
         colors = c;
         quantize.range(colors.range());
         return my;
-    }
+    };
 
     my.format = function(f) {
         format = f;
         return my;
-    }
+    };
 
     my.keyTitle = function(t) {
         keyTitle = t;
         return my;
-    }
+    };
 
     my.toolTipTitle = function(t) {
         toolTipTitle = t;
         return my;
-    }
+    };
 
     my.toolTipColor = function(t) {
         toolTipColor = t;
         return my;
-    }
+    };
 
     my.onZoom = function(f) {
         onZoom = f;
         return my;
-    }
+    };
 
     my.topojsonPrefix = function(s) {
         topojsonPrefix = s;
         return my;
-    }
+    };
 
     my.dataset = function(n) {
         dataset = n;
-        globalZoom.data == null;
+        globalZoom.data = null;
         zoomDataLoader && zoomDataLoader('world',null,dataset,'Global',populateGlobalData);
         if (lastCountryZoom) {
-            lastCountryZoom.data == null;
+            lastCountryZoom.data = null;
             zoomDataLoader && zoomDataLoader('country', lastCountryZoom.id, dataset, zoomedRegionName(), populateProvinceData);
         }
         if (lastProvinceZoom) {
-            lastProvinceZoom.data == null;
+            lastProvinceZoom.data = null;
             zoomDataLoader && zoomDataLoader('province', lastProvinceZoom.id, dataset, zoomedRegionName(), populateCountyData);
         }
         renderLoadingAnimation();
         return my;
-    }
+    };
 
     /**
      * Some irritating states like france don't feel the need to keep their
@@ -785,7 +814,7 @@ function worldmap() {
             }
         ]
         // ZA
-    }
+    };
 
     // alaska has a few counties containing crazy islands...
     // 02050 the "Bethel Census Area"
@@ -803,19 +832,19 @@ function worldmap() {
         '02016' :[{
             bounds: [[-167,62],[-149,67]]
         }]
-    }
+    };
 
-    // TODO: There is one more left in alaska, and one more left in russia.
+    // TODO(prs): There is one more left in alaska, and one more left in russia.
     var ROGUE_PROVINCES_BY_ADM1_CODE = {
         // haven't found any of these yet...
-    }
+    };
 
     // curses... those pesky aleutian islands!
     var ROGUE_US_PROVINCES_BY_POSTAL = {
         'AK': [{
             bounds: [[-165,52],[-128,71]]
         }]
-    }
+    };
 
     var WORLD_PATH = "M500 800q136 0 251 -67t182 -182t67 -251t-67 -251t-182 -182t-251 -67t-251 67t-182 182t-67 251t67 251t182 182t251 67zM759.208 623.167q-24.2935 -20.9146 -56.416 -34.875q14.6911 -41.4364 20.583 -64.875q10.9402 -43.5104 17.417 -90.834"+
         "q0.232906 -1.59594 0.46398 -3.40051q0.231074 -1.80457 0.432775 -3.53644q0.201701 -1.73187 0.391256 -3.39864q0.189555 -1.66677 0.412853 -3.5566q0.223298 -1.88982 0.424136 -3.44082q100.348 24.9436 135.416 58.167q-40.1401 86.2595 -119.125 149.75z"+
@@ -832,3 +861,7 @@ function worldmap() {
 
     return my;
 }
+
+typeof define !== 'undefined' && define(['d3', 'lib/topojson', 'lib/d3.geo.projection.miller'], function() {
+    return worldmap;
+});

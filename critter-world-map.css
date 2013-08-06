@@ -12,7 +12,7 @@ body {
     fill: none;
     stroke: black;
     stroke-opacity: 0.5;
-    stroke-width: 1px;
+    stroke-width: 0.5px;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
 }
@@ -21,7 +21,7 @@ body {
     fill: none;
     stroke: black;
     stroke-opacity: 0.5;
-    stroke-width: 1px;
+    stroke-width: 0.5px;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
 }
@@ -29,7 +29,7 @@ body {
 .cboundary {
     fill: none;
     stroke: white;
-    stroke-width: 1px;
+    stroke-width: 0.5px;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
 }
@@ -71,7 +71,7 @@ svg {
     overflow: hidden;
 }
 
-.hidden {
+.mhidden {
     fill-opacity:0;
     stroke-opacity:0;
 }

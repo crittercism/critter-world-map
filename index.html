@@ -62,7 +62,7 @@
             .format(interval)
             .onZoom(updateTitle)
             .dataset(0)
-            .zoomDataPreloader(function(type,id,dataset,name,callback) {
+            .zoomDataPreloader(function(type,id,dataset,name) {
                 console.log('preload data for ',type,id);
             })
             .zoomDataLoader(function(type,id,dataset,name,callback) {

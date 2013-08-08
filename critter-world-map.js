@@ -232,7 +232,6 @@ function worldmap() {
         }
     }
 
-
     /**
      * Currently only works for the us, which zooms a second step into counties...
      *
@@ -343,7 +342,7 @@ function worldmap() {
         map.selectAll(".pboundary").remove();
         map.selectAll(".ctboundary").remove();
         map.selectAll(".cboundary.zoomed").remove();
-        map.selectAll(".country").classed('zoomed',false);
+        map.selectAll(".country").classed('backgrounded',false);
         map.selectAll(".cboundary").classed('zoomed',false);
 
         // re-render global data
@@ -409,7 +408,6 @@ function worldmap() {
             extent[0] = Math.floor(extent[0] / 10) * 10;
             extent[1] = Math.ceil(extent[1] / 10) * 10;
             quantize.domain(extent);
-            console.log('setting domain to ',extent,'not',d3.extent(d3.values(values)));
             svg.selectAll(cssClass)
                 .attr("style", function (d) {
                     if (d.properties && values && d.properties[key] && values[d.properties[key]]) {
@@ -506,7 +504,6 @@ function worldmap() {
     }
 
     function scaleMap() {
-        console.log('current Zoom is:',currentZoom);
         map.transition().duration(1000).attr('transform', 'translate(' + currentZoom.translation.join(',') + ') scale(' + currentZoom.scale + ')');
     }
 
@@ -570,7 +567,7 @@ function worldmap() {
 
     function renderKeyArea() {
         var r = quantize.range(),
-            l  = r.length, kw = 125;
+            l  = r.length, kw = 125, kh = ((l - 1)*20) + 75;
         var key = svg.append('g').attr('class','key').attr('transform','translate('+0+','+(height - (colors.range().length * 20 + 55))+')');
         key.append('rect').attr('x',0).attr('y',0).attr('height',kh).attr('width',kw).attr('style','fill:white; fill-opacity:0.7');
     }
@@ -663,7 +660,6 @@ function worldmap() {
         svg = selection;
         svg.attr("width", width)
             .attr("height", height);
-        console.log(width, height);
         load();
     }
 

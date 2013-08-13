@@ -203,13 +203,13 @@ function worldmap() {
             lastCountryZoom = currentZoom;
             lastCountryZoom.name = name;
 
-            map.selectAll(".country").attr('class','country backgrounded');
+            map.selectAll(".country").classed('backgrounded',true);
             map.selectAll(".county").remove();
             map.selectAll(".ctboundary").remove();
 
             showMinusButton();
 
-            onZoom && onZoom('country', zoomedRegionName());
+            onZoom && onZoom('country', zoomedRegionName(), iso_a2);
             zoomDataPreloader && zoomDataPreloader('country', iso_a2, dataset, zoomedRegionName());
 
             d3.json(topojsonPrefix+"/provinces/provinces_"+iso_a2+".json", function(error, ptopo) {
@@ -254,7 +254,7 @@ function worldmap() {
             map.selectAll(".pboundary.zoomed").remove();
             map.selectAll(".province").classed('mhidden',true);
 
-            onZoom && onZoom('province', zoomedRegionName());
+            onZoom && onZoom('province', zoomedRegionName(), postal);
             zoomDataPreloader && zoomDataPreloader('province', postal, dataset, zoomedRegionName());
 
             d3.json(topojsonPrefix+"/counties/counties_"+postal.toLowerCase()+".json", function(error, ctopo) {
@@ -299,7 +299,7 @@ function worldmap() {
 
             // not much to do here, province zooms don't show/hide anything new
             //renderCounties();
-            onZoom && onZoom('province', zoomedRegionName());
+            onZoom && onZoom('province', zoomedRegionName(), lastProvinceZoom.id);
             scaleMap();
 
         } else if (lastCountryZoom && currentZoom.id != lastCountryZoom.id) {
@@ -317,10 +317,11 @@ function worldmap() {
             if (lastCountryZoom.data) {
                 setColorStyles('.province', 'adm1_code', lastCountryZoom.data);
             } else {
+                console.log('no lastCountryZoom.data');
                 renderMissingDataKey();
             }
 
-            onZoom && onZoom('country', zoomedRegionName());
+            onZoom && onZoom('country', zoomedRegionName(), lastCountryZoom.id);
             scaleMap();
 
         } else {
@@ -349,10 +350,11 @@ function worldmap() {
         if (globalZoom.data) {
             setColorStyles('.country', 'iso_a2', globalZoom.data);
         } else {
+            console.log('no globalZoom.data');
             renderMissingDataKey();
         }
         hideMinusButton();
-        onZoom && onZoom('world', zoomedRegionName());
+        onZoom && onZoom('world', zoomedRegionName(), null);
         scaleMap();
     }
 
@@ -372,37 +374,47 @@ function worldmap() {
     // note the dataset check - dataset is changed when the map is re-populated
     // and allows you to ignore callbacks from previous datasets
     function populateGlobalData(id, d, values) {
+        console.log('populateGlobalData',id,d,values);
         if (values && d == dataset ) {
             globalZoom.data = values;
-            setColorStyles('.country', 'iso_a2', values);
+            if (!currentZoom || currentZoom.id == null) {
+                setColorStyles('.country', 'iso_a2', values);
+            }
         } else {
-            renderMissingDataKey();
+            console.log('data thrown out',d,dataset);
         }
     }
 
     function populateProvinceData(id, d, values) {
+        console.log('populateProvinceData',id,d,values);
         if (lastCountryZoom && lastCountryZoom.id == id && d == dataset) {
             if (values) {
                 lastCountryZoom.data = values;
-                setColorStyles('.province', 'adm1_code', values);
-            } else {
-                renderMissingDataKey();
+                if (id == currentZoom.id) {
+                    setColorStyles('.province', 'adm1_code', values);
+                }
             }
+        } else {
+            console.log('data thrown out',d,dataset);
         }
     }
 
     function populateCountyData(id, d, values) {
+        console.log('populateCountyData',id,d,values);
         if (lastProvinceZoom && lastProvinceZoom.id == id && d == dataset) {
             if (values) {
                 lastProvinceZoom.data = values;
-                setColorStyles('.county', 'FIPS', values);
-            } else {
-                renderMissingDataKey();
+                if (id == currentZoom.id) {
+                    setColorStyles('.county', 'FIPS', values);
+                }
             }
+        } else {
+            console.log('data thrown out',d,dataset);
         }
     }
 
     function setColorStyles(cssClass, key, values) {
+        console.log('setColorStyles',cssClass, key, values);
         if (values) {
             var extent = d3.extent(d3.values(values));
             extent[0] = Math.floor(extent[0] / 10) * 10;
@@ -414,10 +426,16 @@ function worldmap() {
                         var color = quantize(values[d.properties[key]]);
                         return 'fill:' + color + ';';
                     } else {
+                        // avoid clearing the fill:none on sea areas of US counties
+                        if (cssClass == '.county' && !d.properties.COUNTY) {
+                            return 'fill:none';
+                        }
                         return '';
                     }
                 });
             renderKey();
+        } else {
+            renderMissingDataKey();
         }
     }
 
@@ -637,7 +655,7 @@ function worldmap() {
     }
 
     var load = my.load = function() {
-        onZoom && onZoom('world', 'World');
+        onZoom && onZoom('world', 'World', null);
         zoomDataPreloader && zoomDataPreloader('world', null, dataset, 'World');
         // For the moment, we have a different view of the world for Firefox users
         // They can't handle the polygons of the real world:

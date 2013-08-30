@@ -17,7 +17,13 @@ function worldmap() {
         onZoom = null,
         topojsonPrefix = '',
         dataset=0,
-        firefox=navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+        lastTouchEnd = false,
+        firefox=navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
+        loaded = false;
+
+    var IE = navigator.userAgent.indexOf(' MSIE ') > -1;
+
+    var DEVMODE = true;
 
     var projection = d3.geo.miller()
         .scale(width / (2*Math.PI)) // woolly rationale here...
@@ -30,25 +36,33 @@ function worldmap() {
 
     var quantize = d3.scale.quantize().range(colors.range());
 
-    var MAX_ZOOM = 90;
+    var MAX_ZOOM = 120;
 
     var path = d3.geo.path()
         .projection(projection);
 
     var currentZoom = null;
-    var globalZoom = {
-        translation: [0,0],
-        scale: 1
-    };
+    var globalZoom = {};
     var lastCountryZoom = null;
     var lastProvinceZoom = null;
 
+    var deepLink = null;
+
+    function resetSvg() {
+        svg.selectAll('.map').remove();
+        svg.selectAll('.sea').remove();
+        svg.selectAll('.key').remove();
+        svg.selectAll('.mapToolTip').remove();
+        hideMinusButton();
+    }
+
+    function renderSea() {
+        var sea = svg.append('rect').classed('sea',true).attr('x',0).attr('y',0).attr('width',width).attr('height',height);
+        sea.style("pointer-events", "all").on('click',zoomOut);
+    }
+
     function renderWorld() {
         var w = globalZoom.topojson;
-        var sea = svg.append('rect').classed('sea',true).attr('x',0).attr('y',0).attr('width',width).attr('height',height);
-
-        sea.style("pointer-events", "all").on('click',zoomOut);
-
         map = svg.append('g').classed('map',true);
 
         renderKeyArea();
@@ -69,7 +83,7 @@ function worldmap() {
             .classed('country',true)
             .attr("d", function(t) {
                 return path(t);
-            }).style('pointer-events','all');
+            }).style('pointer-events','fill');
 
         // draw boundaries between countries
         map.insert("path", ".cboundary")
@@ -77,10 +91,27 @@ function worldmap() {
             .classed('cboundary',true)
             .attr("d", path).style('pointer-events','none');
 
-        map.on("click", zoomRouter).on("mousemove", mouseOverRegion).on("mouseout", mouseOutRegion);
+        map.on("click", zoomRouter).on('touchstart',detectDoubleTap).on("mousemove", mouseOverRegion).on("mouseout", mouseOutRegion);
+
+        IE && fixLineWidths();
 
         renderLoadingAnimation();
         zoomDataLoader && zoomDataLoader('world',null,dataset,'Global',populateGlobalData);
+        my.deepLink();
+    }
+
+    function detectDoubleTap() {
+        var t = d3.touches(svg.node()), now;
+        now = Date.now();
+        DEVMODE && console.log('scanning for double tap...', lastTouchEnd, now, t);
+        if (t.length === 1) {
+            if (lastTouchEnd && (now - lastTouchEnd <= 750)) {
+                DEVMODE && console.log('double tapped...');
+                zoomRouter();
+            }
+            lastTouchEnd = now;
+        }
+        //d3.event.preventDefault();
     }
 
     function zoomRouter() {
@@ -89,16 +120,23 @@ function worldmap() {
             d = target.datum();
 
         if (target.classed('country')) {
-            zoomToCountry();
+            zoomToCountryByClick();
         } else if (target.classed('province')) {
             if (d.properties.iso_a2 && d.properties.iso_a2 == 'US') {
-                zoomToProvince();
+                zoomToProvinceByClick();
             } else {
                 extraZoom();
             }
         } else if (target.classed('county')) {
             extraZoom();
         }
+    }
+
+
+    function preRenderCountry() {
+        map.selectAll(".country").classed('backgrounded',true);
+        map.selectAll(".county").remove();
+        map.selectAll(".ctboundary").remove();
     }
 
     function renderCountry() {
@@ -142,7 +180,14 @@ function worldmap() {
                 .datum(topojson.mesh(provincesTopojson, provincesTopojson.objects.countries))
                 .attr("d", path).style('pointer-events', 'none');
         }
-        provinces.style("pointer-events", "all").attr('pointer-events','all');
+        provinces.style("pointer-events", "fill");
+        IE && fixLineWidths();
+    }
+
+    function preRenderCounties() {
+        map.selectAll(".cboundary.zoomed").remove();
+        map.selectAll(".pboundary.zoomed").remove();
+        map.selectAll(".province").classed('mhidden',true);
     }
 
     function renderCounties() {
@@ -186,26 +231,37 @@ function worldmap() {
             }))
             .classed('ctboundary',true)
             .attr("d", path).style('pointer-events', 'none');
+        IE && fixLineWidths();
     }
 
-    function zoomToCountry() {
+    function zoomToCountryByClick() {
         var e = d3.event,
             target = d3.select(e.target),
-            d = target.datum(), iso_a2, name;
+            d = target.datum();
+        zoomToCountry(d);
+    }
 
+    function zoomToCountryByCode(iso_a2) {
+        var w = globalZoom.topojson;
+        var countryGeo = topojson.feature(w, w.objects.countries);
+        var feature = countryGeo.features.filter(function(c) { return c.properties.iso_a2 == iso_a2; })[0];
+        if (feature) {
+            zoomToCountry(feature);
+        }
+    }
+
+    function zoomToCountry(feature) {
         // -99 is a code natural earth gives to tiny territories with no country code... eg/ guantanamo bay
-        if (d && d.properties && d.properties.iso_a2 && d.properties.iso_a2 != -99) {
-            iso_a2 = d.properties.iso_a2;
-            name = d.properties.name;
+        if (feature && feature.properties && feature.properties.iso_a2 && feature.properties.iso_a2 != -99) {
+            iso_a2 = feature.properties.iso_a2;
+            name = feature.properties.name;
 
             lastProvinceZoom = null;
-            zoom(ROGUE_STATES, iso_a2, 0.85);
+            zoom(feature, ROGUE_STATES, iso_a2, 0.85);
             lastCountryZoom = currentZoom;
             lastCountryZoom.name = name;
 
-            map.selectAll(".country").classed('backgrounded',true);
-            map.selectAll(".county").remove();
-            map.selectAll(".ctboundary").remove();
+            preRenderCountry();
 
             showMinusButton();
 
@@ -214,7 +270,7 @@ function worldmap() {
 
             d3.json(topojsonPrefix+"/provinces/provinces_"+iso_a2+".json", function(error, ptopo) {
                 if (error) {
-                    console.log(error);
+                    DEVMODE && console.log(error);
                     return;
                 }
 
@@ -224,11 +280,30 @@ function worldmap() {
                     renderCountry();
                     renderLoadingAnimation();
                     zoomDataLoader && zoomDataLoader('country', iso_a2, dataset, zoomedRegionName(), populateProvinceData);
+                    my.deepLink();
                 }
             });
 
         } else {
-            console.log('no iso_a2 found', d, e);
+            DEVMODE && console.log('no iso_a2 found', feature, e);
+        }
+    }
+
+    function zoomToProvinceByClick() {
+        var e = d3.event,
+            target = d3.select(e.target),
+            d = target.datum(), iso_a2, name;
+        zoomToProvince(d);
+    }
+
+    function zoomToProvinceByCode(adm1_code) {
+        var w = lastCountryZoom.topojson;
+        var provinceGeo = topojson.feature(w, w.objects.provinces);
+        var feature = provinceGeo.features.filter(function(c) { return c.properties.adm1_code == adm1_code; })[0];
+        if (feature) {
+            zoomToProvince(feature);
+        } else {
+            DEVMODE && console.log('feature not found');
         }
     }
 
@@ -237,38 +312,34 @@ function worldmap() {
      *
      * In the future, we may need to do something similar for Australia, Canada and other states.
      */
-    function zoomToProvince() {
-        var e = d3.event,
-            target = d3.select(e.target),
-            d = target.datum(), postal, i, name;
+    function zoomToProvince(feature) {
+        var adm1_code, name;
+        if (feature && feature.properties && feature.properties.adm1_code) {
+            adm1_code = feature.properties.adm1_code;
+            name = feature.properties.name;
 
-        if (d && d.properties && d.properties.postal) {
-            postal = d.properties.postal;
-            name = d.properties.name;
-
-            zoom(ROGUE_US_PROVINCES_BY_POSTAL, postal, 0.85);
+            zoom(feature, ROGUE_US_PROVINCES_BY_ADM1_CODE, adm1_code, 0.85);
             lastProvinceZoom = currentZoom;
             lastProvinceZoom.name = name;
 
-            map.selectAll(".cboundary.zoomed").remove();
-            map.selectAll(".pboundary.zoomed").remove();
-            map.selectAll(".province").classed('mhidden',true);
+            preRenderCounties();
 
-            onZoom && onZoom('province', zoomedRegionName(), postal);
-            zoomDataPreloader && zoomDataPreloader('province', postal, dataset, zoomedRegionName());
+            onZoom && onZoom('province', zoomedRegionName(), adm1_code);
+            zoomDataPreloader && zoomDataPreloader('province', adm1_code, dataset, zoomedRegionName());
 
-            d3.json(topojsonPrefix+"/counties/counties_"+postal.toLowerCase()+".json", function(error, ctopo) {
+            d3.json(topojsonPrefix+"/counties/counties_"+adm1_code.toLowerCase()+".json", function(error, ctopo) {
                 if (error) {
-                    console.log(error);
+                    DEVMODE && console.log(error);
                     return;
                 }
                 // just in case there's been another click zoom before the load...
-                if (currentZoom.id = postal) {
+                if (currentZoom.id = adm1_code) {
                     currentZoom.topojson = ctopo;
                     lastProvinceZoom.topojson = ctopo;
                     renderCounties();
                     renderLoadingAnimation();
-                    zoomDataLoader && zoomDataLoader('province', postal, dataset, zoomedRegionName(), populateCountyData);
+                    zoomDataLoader && zoomDataLoader('province', adm1_code, dataset, zoomedRegionName(), populateCountyData);
+                    my.deepLink();
                 }
             });
         }
@@ -282,17 +353,45 @@ function worldmap() {
         if (d && d.properties) {
             if (d.properties.FIPS) {
                 fips = d.properties.FIPS;
-                zoom(ROGUE_US_COUNTIES, fips, 0.3);
+                zoom(d, ROGUE_US_COUNTIES, fips, 0.3);
+                if (CALIFORNIA_HACK.indexOf(fips) != -1) {
+                    // we're zoomed right in on SF... hack by clipping the
+                    // US
+                    console.log('appending clip path');
+
+                    map.append("defs").append("clipPath")
+                        .attr("id", "calHackClip")
+                        .append("path")
+                        .datum(topojson.mesh(lastProvinceZoom.topojson, lastProvinceZoom.topojson.objects.states))
+                        .attr("d", path).style('pointer-events', 'none');
+
+                    setTimeout(function() {
+                        map.selectAll('.lboundary').attr("clip-path", "url(#calHackClip)");
+                        map.selectAll('.country').attr("clip-path", "url(#calHackClip)");
+                    },500);
+
+                } else {
+                    killCaliforniaHack();
+                }
             } else if (d.properties.adm1_code) {
                 adm1_code = d.properties.adm1_code;
-                zoom(ROGUE_PROVINCES_BY_ADM1_CODE, adm1_code, 0.3);
+                zoom(d, ROGUE_PROVINCES_BY_ADM1_CODE, adm1_code, 0.3);
             }
         }
+    }
+
+    function killCaliforniaHack() {
+        setTimeout(function() {
+            map.selectAll('#calHackClip').remove();
+            map.selectAll('.lboundary').attr("clip-path", "");
+            map.selectAll('.country').attr("clip-path", "");
+        },300);
     }
 
     function zoomOut() {
         // remove any province clipping shapes.
         map.selectAll('#pClip').remove();
+        killCaliforniaHack();
 
         if (lastProvinceZoom && lastProvinceZoom.id != currentZoom.id) {
             currentZoom = lastProvinceZoom;
@@ -317,7 +416,7 @@ function worldmap() {
             if (lastCountryZoom.data) {
                 setColorStyles('.province', 'adm1_code', lastCountryZoom.data);
             } else {
-                console.log('no lastCountryZoom.data');
+                DEVMODE && console.log('no lastCountryZoom.data');
                 renderMissingDataKey();
             }
 
@@ -330,6 +429,8 @@ function worldmap() {
     }
 
     function zoomOutWorld() {
+        killCaliforniaHack();
+
         currentZoom = globalZoom;
         lastProvinceZoom = null;
         lastCountryZoom = null;
@@ -350,7 +451,7 @@ function worldmap() {
         if (globalZoom.data) {
             setColorStyles('.country', 'iso_a2', globalZoom.data);
         } else {
-            console.log('no globalZoom.data');
+            DEVMODE && console.log('no globalZoom.data');
             renderMissingDataKey();
         }
         hideMinusButton();
@@ -374,61 +475,55 @@ function worldmap() {
     // note the dataset check - dataset is changed when the map is re-populated
     // and allows you to ignore callbacks from previous datasets
     function populateGlobalData(id, d, values) {
-        console.log('populateGlobalData',id,d,values);
-        if (values && d == dataset ) {
+        DEVMODE && console.log('populateGlobalData',id,d,values);
+        if (values && d == dataset) {
             globalZoom.data = values;
-            if (!currentZoom || currentZoom.id == null) {
+            if (lastCountryZoom == null) {
                 setColorStyles('.country', 'iso_a2', values);
             }
         } else {
-            console.log('data thrown out',d,dataset);
+            DEVMODE && console.log('data thrown out',d,dataset);
         }
     }
 
     function populateProvinceData(id, d, values) {
-        console.log('populateProvinceData',id,d,values);
+        DEVMODE && console.log('populateProvinceData',id,d,values);
         if (lastCountryZoom && lastCountryZoom.id == id && d == dataset) {
-            if (values) {
-                lastCountryZoom.data = values;
-                if (id == currentZoom.id) {
-                    setColorStyles('.province', 'adm1_code', values);
-                }
+            lastCountryZoom.data = values;
+            if (lastProvinceZoom == null) {
+                setColorStyles('.province', 'adm1_code', values);
             }
         } else {
-            console.log('data thrown out',d,dataset);
+            DEVMODE && console.log('data thrown out',d,dataset);
         }
     }
 
     function populateCountyData(id, d, values) {
-        console.log('populateCountyData',id,d,values);
+        DEVMODE && console.log('populateCountyData',id,d,values);
         if (lastProvinceZoom && lastProvinceZoom.id == id && d == dataset) {
-            if (values) {
-                lastProvinceZoom.data = values;
-                if (id == currentZoom.id) {
-                    setColorStyles('.county', 'FIPS', values);
-                }
-            }
+            lastProvinceZoom.data = values;
+            setColorStyles('.county', 'FIPS', values);
         } else {
-            console.log('data thrown out',d,dataset);
+            DEVMODE && console.log('data thrown out',d,dataset);
         }
     }
 
     function setColorStyles(cssClass, key, values) {
-        console.log('setColorStyles',cssClass, key, values);
+        DEVMODE && console.log('setColorStyles',cssClass, key, values);
         if (values) {
             var extent = d3.extent(d3.values(values));
             extent[0] = Math.floor(extent[0] / 10) * 10;
             extent[1] = Math.ceil(extent[1] / 10) * 10;
             quantize.domain(extent);
             svg.selectAll(cssClass)
-                .attr("style", function (d) {
+                .style("fill", function (d) {
                     if (d.properties && values && d.properties[key] && values[d.properties[key]]) {
                         var color = quantize(values[d.properties[key]]);
-                        return 'fill:' + color + ';';
+                        return color;
                     } else {
                         // avoid clearing the fill:none on sea areas of US counties
                         if (cssClass == '.county' && !d.properties.COUNTY) {
-                            return 'fill:none';
+                            return 'none';
                         }
                         return '';
                     }
@@ -500,7 +595,7 @@ function worldmap() {
             .style('fill',toolTipColor)
             .text(data);
 
-        d3.event.stopPropagation();
+        //d3.event.stopPropagation();
     }
 
     function mouseOutRegion() {
@@ -509,9 +604,9 @@ function worldmap() {
 
     function isPointInBounds(bounds, p) {
         var bottomLeft = projection(bounds[0]), topRight = projection(bounds[1]),
-            point, translation = currentZoom ? currentZoom.translation : null, scale = currentZoom ? currentZoom.scale : null;
-        if (translation && scale) {
-            point = [(p[0]-translation[0])/scale,(p[1]-translation[1])/scale];
+            point, scaling = calculateScaling();
+        if (scaling) {
+            point = [(p[0]-scaling.tr[0])/scaling.s,(p[1]-scaling.tr[1])/scaling.s];
         } else {
             point = p;
         }
@@ -521,19 +616,64 @@ function worldmap() {
             && point[1] >= topRight[1];
     }
 
-    function scaleMap() {
-        map.transition().duration(1000).attr('transform', 'translate(' + currentZoom.translation.join(',') + ') scale(' + currentZoom.scale + ')');
+    function scaleMap(transition) {
+        var m = (transition || transition == null) ? map.transition().duration(1000) : map, sc = calculateScaling();
+        m.attr('transform', 'translate(' + sc.tr.join(',') + ') scale(' + sc.s + ')');
+        IE && fixLineWidths();
     }
 
-    function zoom(rogueRegions, id, scalePadding) {
-        var e = d3.event, m = d3.mouse(svg.node()),
-            target = d3.select(e.target),
-            d = target.datum(), bounds, i;
+    function fixLineWidths() {
+        var sc = calculateScaling(), s = sc.s;
+        var halfPxWidth = (0.5/s) + 'px';
+        var twoPxWidth = (2/s) + 'px';
+        var selectionWidth = (10/s) + 'px';
+        DEVMODE && console.log('fixing line widths for scale '+s+' to ',halfPxWidth,twoPxWidth,selectionWidth);
+        map.selectAll(".cboundary").style('stroke-width',halfPxWidth);
+        map.selectAll(".ctboundary").style('stroke-width',halfPxWidth);
+        map.selectAll(".pboundary").style('stroke-width',halfPxWidth);
+        map.selectAll(".cboundary.zoomed").style('stroke-width',selectionWidth);
+        map.selectAll(".pboundary.zoomed").style('stroke-width',selectionWidth);
+        map.selectAll(".lboundary").style('stroke-width',twoPxWidth);
+    }
 
+    function calculateScaling() {
+        var bounds, scalePadding;
+        if (currentZoom && currentZoom.bounds && currentZoom.scalePadding) {
+            bounds = currentZoom.bounds;
+            scalePadding = currentZoom.scalePadding;
+            var centroid = [d3.mean([bounds[0][0],bounds[1][0]]), d3.mean([bounds[0][1],bounds[1][1]])];
+            var p1 = projection(bounds[0]);
+            var p2 = projection(bounds[1]);
+            var sx = scalePadding/(Math.abs(p2[0] - p1[0]));
+            var sy = scalePadding/(Math.abs(p2[1] - p1[1]));
+
+            var s = d3.min([width*sx,height*sy,MAX_ZOOM]);
+
+            var tr = projection(centroid);
+            tr[0] = -tr[0]*s + (width)/2;
+            tr[1] = -tr[1]*s + (height)/2;
+            return {
+                s: s,
+                tr: tr
+            };
+        } else {
+            return {
+                s: 1,
+                tr: [0,0]
+            }
+        }
+    }
+
+    function zoom(feature, rogueRegions, id, scalePadding) {
+        var m, t, bounds, i;
+        if (!feature) {
+            console.log('failing to zoom, cause no feature!');
+        }
         if (d3.keys(rogueRegions).indexOf(id) != -1) {
-            if (rogueRegions[id].length == 1) {
+            if (rogueRegions[id].length == 1 || !d3.event) {
                 bounds = rogueRegions[id][0].bounds;
             } else {
+                m = d3.mouse(svg.node());
                 for (i = 0; i < rogueRegions[id].length; i++) {
                     if (isPointInBounds(rogueRegions[id][i].click, m)) {
                         bounds = rogueRegions[id][i].bounds;
@@ -542,24 +682,14 @@ function worldmap() {
                 }
             }
         } else {
-            bounds = d3.geo.bounds(d);
+            bounds = d3.geo.bounds(feature);
         }
 
-        var centroid = [d3.mean([bounds[0][0],bounds[1][0]]), d3.mean([bounds[0][1],bounds[1][1]])];
-        var p1 = projection(bounds[0]);
-        var p2 = projection(bounds[1]);
-        var sx = (width*scalePadding)/(Math.abs(p2[0] - p1[0]));
-        var sy = (height*scalePadding)/(Math.abs(p2[1] - p1[1]));
-        var s = d3.min([sx,sy,MAX_ZOOM]);
-
-        var tr = projection(centroid);
-        tr[0] = -tr[0]*s + (width)/2;
-        tr[1] = -tr[1]*s + (height)/2;
-
+        // we have to store all this, as we
         currentZoom = {
             id:id,
-            translation:tr,
-            scale:s
+            bounds: bounds,
+            scalePadding: scalePadding
         };
 
         scaleMap();
@@ -655,6 +785,7 @@ function worldmap() {
     }
 
     var load = my.load = function() {
+        loaded = true;
         onZoom && onZoom('world', 'World', null);
         zoomDataPreloader && zoomDataPreloader('world', null, dataset, 'World');
         // For the moment, we have a different view of the world for Firefox users
@@ -662,10 +793,11 @@ function worldmap() {
         var json = firefox ? '/world-moz.json' : '/world.json';
         d3.json(topojsonPrefix+json, function(error, world) {
             if (error) {
-                console.log(error);
+                DEVMODE && console.log(error);
                 return;
             }
             globalZoom.topojson = world;
+            renderSea();
             renderWorld();
         });
     };
@@ -742,20 +874,88 @@ function worldmap() {
     };
 
     my.dataset = function(n) {
-        dataset = n;
-        globalZoom.data = null;
-        zoomDataLoader && zoomDataLoader('world',null,dataset,'Global',populateGlobalData);
-        if (lastCountryZoom) {
-            lastCountryZoom.data = null;
-            zoomDataLoader && zoomDataLoader('country', lastCountryZoom.id, dataset, zoomedRegionName(), populateProvinceData);
+        if (loaded) {
+            dataset = n;
+            globalZoom.data = null;
+            zoomDataLoader && zoomDataLoader('world',null,dataset,'Global',populateGlobalData);
+            if (lastCountryZoom) {
+                lastCountryZoom.data = null;
+                zoomDataLoader && zoomDataLoader('country', lastCountryZoom.id, dataset, zoomedRegionName(), populateProvinceData);
+            }
+            if (lastProvinceZoom) {
+                lastProvinceZoom.data = null;
+                zoomDataLoader && zoomDataLoader('province', lastProvinceZoom.id, dataset, zoomedRegionName(), populateCountyData);
+            }
+            renderLoadingAnimation();
         }
-        if (lastProvinceZoom) {
-            lastProvinceZoom.data = null;
-            zoomDataLoader && zoomDataLoader('province', lastProvinceZoom.id, dataset, zoomedRegionName(), populateCountyData);
-        }
-        renderLoadingAnimation();
         return my;
     };
+
+    /**
+     *
+     * @param country - iso_a2 country code - eg/ US
+     * @param province - functional with adm1_code
+     * @param county - works for
+     */
+    my.deepLink = function(country,province,county) {
+        DEVMODE && console.log('deeplink',deepLink);
+        if (country) {
+            deepLink = {
+                country: country,
+                province: province,
+                county: county
+            };
+        }
+        if (deepLink) {
+            if (deepLink.country && globalZoom.topojson && (!currentZoom || currentZoom.id !== deepLink.country)) {
+                zoomToCountryByCode(deepLink.country);
+                deepLink.country = null;
+            }
+            // Zoom to a US state
+            if (deepLink.province &&
+                currentZoom && currentZoom.id == 'US'
+                && lastCountryZoom && lastCountryZoom.topojson
+                && (!currentZoom || currentZoom.id !== deepLink.province)) {
+                zoomToProvinceByCode(deepLink.province);
+                deepLink.province = null;
+                DEVMODE && console.log('attempted province zoom');
+            }
+            // Note, deep linking to extra zoom locations (province or county) is not yet handled.
+        }
+        return my;
+    };
+
+    my.resize = function() {
+        resetSvg();
+        svg.attr('width',width).attr('height',height);
+        renderSea();
+        renderWorld();
+        if (globalZoom.data) {
+            setColorStyles('.country', 'iso_a2', globalZoom.data);
+        }
+        if (lastCountryZoom) {
+            preRenderCountry();
+            renderCountry();
+            if (lastCountryZoom.data) {
+                setColorStyles('.province', 'adm1_code', lastCountryZoom.data);
+            }
+            if (lastProvinceZoom) {
+                preRenderCounties();
+                renderCounties();
+                if (lastProvinceZoom.data) {
+                    setColorStyles('.county', 'FIPS', lastProvinceZoom.data);
+                }
+            }
+            showMinusButton();
+        }
+        renderKey();
+        scaleMap(false);
+    }
+
+    my.debug = function(b) {
+        DEVMODE = b;
+        return my;
+    }
 
     /**
      * Some irritating states like france don't feel the need to keep their
@@ -854,11 +1054,23 @@ function worldmap() {
     };
 
     // curses... those pesky aleutian islands!
-    var ROGUE_US_PROVINCES_BY_POSTAL = {
-        'AK': [{
+    var ROGUE_US_PROVINCES_BY_ADM1_CODE = {
+        'USA-3563': [{
             bounds: [[-165,52],[-128,71]]
         }]
     };
+
+    /**
+     * A bunch of counties zoomed in close on SF... where we want to clip the
+     * continental US border by the outline of california and can do so without
+     * hiding non zoomed in states.
+     */
+    var CALIFORNIA_HACK = [
+        "06001", "06013",
+        "06041", "06075",
+        "06081", "06081",
+        "06085", "06087",
+        "06095", "06097"];
 
     var WORLD_PATH = "M500 800q136 0 251 -67t182 -182t67 -251t-67 -251t-182 -182t-251 -67t-251 67t-182 182t-67 251t67 251t182 182t251 67zM759.208 623.167q-24.2935 -20.9146 -56.416 -34.875q14.6911 -41.4364 20.583 -64.875q10.9402 -43.5104 17.417 -90.834"+
         "q0.232906 -1.59594 0.46398 -3.40051q0.231074 -1.80457 0.432775 -3.53644q0.201701 -1.73187 0.391256 -3.39864q0.189555 -1.66677 0.412853 -3.5566q0.223298 -1.88982 0.424136 -3.44082q100.348 24.9436 135.416 58.167q-40.1401 86.2595 -119.125 149.75z"+

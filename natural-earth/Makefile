@@ -5,18 +5,21 @@ node_modules:
 	cd node_modules/us-atlas && make
 
 # US only...
-counties:
+counties: node_modules
 	mkdir -p shp/counties
 	mkdir -p topojson/counties
 	cp -r node_modules/us-atlas/shp/* shp/counties
+	# generate topojson for each us state
 	for STATE in `ls shp/counties/`; do \
 		echo $${STATE}; \
+		ADM1_CODE=$$(node extractUSPostalAndAdm1Code.js | egrep -i ^$${STATE} | cut -d ' ' -f 2); \
+		echo $${ADM1_CODE}; \
 		if `[ "$${STATE}" = "ak" ]`; then SIMPLIFY=0.03; else SIMPLIFY=0.2; fi; \
-		topojson --cartesian -q 1e6 --simplify-proportion $${SIMPLIFY} -p COUNTY,STATE,FIPS --id-property=+FIPS -- counties=shp/counties/$${STATE}/counties.shp states=shp/counties/$${STATE}/states.shp > topojson/counties/counties_$${STATE}.json; \
+		topojson --cartesian -q 1e6 --simplify-proportion $${SIMPLIFY} -p COUNTY,STATE,FIPS --id-property=+FIPS -- counties=shp/counties/$${STATE}/counties.shp states=shp/counties/$${STATE}/states.shp > topojson/counties/counties_$${ADM1_CODE}.json; \
 	done
 	cp -r topojson/counties ../topojson
 
-provinces:
+provinces: node_modules
 	mkdir -p geojson/provinces
 	mkdir -p topojson/provinces
 	for ISO_CODE in `node ./countries.js`; do \
@@ -28,7 +31,7 @@ provinces:
 	done
 	cp -r topojson/provinces ../topojson
 
-world.json:
+world.json: node_modules
 	mkdir -p geojson/countries
 	mkdir -p topojson/countries
 	ogr2ogr -f 'GeoJSON' -where "admin != ('Antarctica')" geojson/countries/ne_10m_countries_geojson.json ne_10m_admin_0_countries_lakes/ne_10m_admin_0_countries_lakes.shp
@@ -42,4 +45,4 @@ world.json:
 	du -sh topojson/world-moz.json
 
 clean:
-	rm -rf topojson geojson shp node_modules
+	rm -rf topojson geojson shp

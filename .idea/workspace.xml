@@ -5,44 +5,98 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/natural-earth/extractUSPostalAndAdm1Code.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ak.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_al.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ar.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_az.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ca.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_co.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ct.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_dc.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_de.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_fl.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ga.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_hi.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ia.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_id.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_il.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_in.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ks.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ky.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_la.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ma.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_md.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_me.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_mi.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_mn.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_mo.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ms.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_mt.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_nc.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_nd.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ne.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_nh.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_nj.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_nm.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_nv.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ny.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_oh.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ok.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_or.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_pa.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ri.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_sc.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_sd.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_tn.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_tx.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_us.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_ut.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_va.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_vt.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_wa.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_wi.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_wv.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/topojson/counties/counties_wy.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/natural-earth/Makefile" afterPath="$PROJECT_DIR$/natural-earth/Makefile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/critter-world-map.js" afterPath="$PROJECT_DIR$/critter-world-map.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="click-zoomable-map.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376072929167" ignored="false" />
-    <file path="/index.html" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376086179079" ignored="false" />
+    <file path="/Dummy.txt" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377882709468" ignored="false" />
+    <file path="/index.html" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376592590827" ignored="false" />
     <file path="/countries.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1374174689867" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/LineGraphView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376343373381" ignored="false" />
-    <file path="/Makefile" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375748457134" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/LineGraphView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
+    <file path="/Makefile" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377888575896" ignored="false" />
     <file path="/d3-world-map.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375314173546" ignored="false" />
     <file path="/d3-world-map.css" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375304798898" ignored="false" />
     <file path="/fragment.js2" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375221030837" ignored="false" />
-    <file path="$PROJECT_DIR$/../d3playground/public/d3montecarlo.html" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1374881323898" ignored="false" />
-    <file path="/d3montecarlo.html" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1374881242961" ignored="false" />
+    <file path="$PROJECT_DIR$/../d3playground/public/d3montecarlo.html" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377883747475" ignored="false" />
+    <file path="/d3montecarlo.html" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377883731883" ignored="false" />
     <file path="$PROJECT_DIR$/../d3playground/public/javascripts/latencyGraph.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1374870931251" ignored="false" />
     <file path="/README" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375122194624" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/README" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375481216576" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/shared/GraphUtils.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375215209908" ignored="false" />
     <file path="/.gitignore" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375377645320" ignored="false" />
     <file path="/README.md" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375387205171" ignored="false" />
-    <file path="/critter-world-map.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376354624909" ignored="false" />
+    <file path="/critter-world-map.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377889834575" ignored="false" />
     <file path="/critter-world-map.css" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375828970820" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/lib/critter-world-map.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376354656742" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/lib/critter-world-map.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377890618835" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/lib/d3.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347086273" ignored="false" />
     <file path="/d3.geo.projection.miller.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375748606570" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/lib/d3.geo.projection.miller.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375828934108" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/lib/d3.geo.projection.miller.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377030760894" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/routers/AppRouter.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376343373381" ignored="false" />
     <file path="/AppRouter.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376088704153" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/location/LocationView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375998612231" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/location/LocationView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
     <file path="/LocationView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375988154334" ignored="false" />
     <file path="/Location._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375900316814" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/templates/Location._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376343373381" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/location/MapView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376355569021" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/templates/Location._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/location/MapView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377041783973" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/templates/Map._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375502768052" ignored="false" />
     <file path="/Map._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375502454972" ignored="false" />
-    <file path="/MapView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376355562582" ignored="false" />
+    <file path="/MapView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377041782715" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/style.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375831498197" ignored="false" />
     <file path="/style.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375831497517" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/lib/topojson.v1.min.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375503665156" ignored="false" />
@@ -53,12 +107,12 @@
     <file path="/fonts.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375740951002" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/navbars.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375739137317" ignored="false" />
     <file path="/navbars.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375739135805" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/AppView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376344571690" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/critter-world-map.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375814972810" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/AppView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/critter-world-map.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376950087259" ignored="false" />
     <file path="/critter-world-map.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375814973653" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/location.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375900074998" ignored="false" />
-    <file path="/location.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375900063052" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/apm-ui.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376343373381" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/location.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
+    <file path="/location.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376430932596" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/apm-ui.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
     <file path="/apm-ui.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375899360321" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/location.css" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375900075479" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/apm-ui.css" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375901357548" ignored="false" />
@@ -68,8 +122,8 @@
     <file path="/GeoModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375918195029" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/test/testGeoModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375916476522" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/models/GeoRegionsCollection.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375916550115" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/models/GeoWorldModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376355411554" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/models/GeoRegionModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375987565598" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/models/GeoWorldModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377036950259" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/models/GeoRegionModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
     <file path="/GeoWorldModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376355411119" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/test/GeoWorldModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375916765354" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/test/testGeoRegionModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375920510734" ignored="false" />
@@ -81,18 +135,18 @@
     <file path="/GeoRegionModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375920670928" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/app.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376343373381" ignored="false" />
     <file path="/app.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375989268647" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/models/FilteredModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376343373381" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/models/FilteredModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
     <file path="/FilteredModel.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1375998304471" ignored="false" />
     <file path="/AppView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376344566834" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/colors.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376343373381" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/stylesheets/imports/colors.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
     <file path="/colors.less" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376081292577" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/network/ServiceBarView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376348313685" ignored="false" />
-    <file path="/ServiceBarView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376348304983" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/views/network/ServiceBarView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
+    <file path="/ServiceBarView.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376434184536" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/lib/topojson.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376343373381" ignored="false" />
     <file path="/ServiceBar._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376345931381" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/templates/ServiceBar._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376345931381" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/templates/ServiceBar._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
     <file path="/EndpointListItem._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376345573700" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/templates/EndpointListItem._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376345573700" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/templates/EndpointListItem._" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376673769403" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/jquery/node_modules/jsdom/node_modules/request/node_modules/hawk/node_modules/boom/node_modules/hoek/lib/index.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347086273" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/jquery/node_modules/htmlparser/lib/htmlparser.min.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347117279" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/jquery/node_modules/jsdom/lib/jsdom/level2/html.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347117280" ignored="false" />
@@ -101,7 +155,7 @@
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/jquery/node_modules/htmlparser/new/test02.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347132944" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/jquery/node_modules/htmlparser/new/compat.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347132944" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/jquery/node_modules/jsdom/node_modules/request/node_modules/hawk/node_modules/hoek/lib/index.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347117279" ignored="false" />
-    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/navtest/critterNav.min.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347086273" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/navtest/critterNav.min.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377029184885" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/d3/node_modules/jsdom/node_modules/request/node_modules/hawk/lib/browser.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347132944" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/d3/src/math/adder.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347117280" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/jquery/node_modules/htmlparser/new/htmlparser.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347132944" ignored="false" />
@@ -196,6 +250,12 @@
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/less-middleware/node_modules/less/node_modules/request/node_modules/node-uuid/uuid.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347117280" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/less-middleware/node_modules/less/dist/less-1.3.2.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347132944" ignored="false" />
     <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/node_modules/less-middleware/node_modules/less/dist/less-1.3.1.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1376347117279" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/routes/index.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377032717129" ignored="false" />
+    <file path="/index.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377032717129" ignored="false" />
+    <file path="$USER_HOME$/PycharmProjects/crittercism/server/apm-portaljs/public/javascripts/shared/App.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377031763632" ignored="false" />
+    <file path="/App.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377031763269" ignored="false" />
+    <file path="/junk.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377106099033" ignored="false" />
+    <file path="/extractUSPostalAndAdm1Code.js" changelist="e8d68b25-8c28-4ac3-a39d-2b7ccf266a1b" time="1377884968914" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,19 +302,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="critter-world-map.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="critter-world-map.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/critter-world-map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="822" column="128" selection-start="29599" selection-end="29599" vertical-scroll-proportion="0.27839115">
+            <state line="478" column="56" selection-start="17132" selection-end="17132" vertical-scroll-proportion="-17.038462">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Makefile" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/natural-earth/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="94" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="extractUSPostalAndAdm1Code.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/natural-earth/extractUSPostalAndAdm1Code.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="35" selection-start="296" selection-end="296" vertical-scroll-proportion="-5.1923075">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="junk.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/junk.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="86" selection-start="949" selection-end="949" vertical-scroll-proportion="-4.25">
+            <state line="58" column="12" selection-start="1661" selection-end="1661" vertical-scroll-proportion="0.5065789">
               <folding />
             </state>
           </provider>
@@ -272,16 +359,7 @@
       <file leaf-file-name="critter-world-map.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/critter-world-map.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="101" selection-start="1333" selection-end="1333" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="world.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/topojson/world.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="519072" selection-end="519072" vertical-scroll-proportion="0.0">
+            <state line="16" column="38" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -306,8 +384,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/world.json" />
-        <option value="$PROJECT_DIR$/countries.js" />
         <option value="$PROJECT_DIR$/natural-earth/countries.js" />
         <option value="$PROJECT_DIR$/d3.v3.js" />
         <option value="$PROJECT_DIR$/d3-world-map.css" />
@@ -316,11 +392,14 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/libs/d3.v3.js" />
         <option value="$PROJECT_DIR$/libs/d3.geo.projection.dymaxion.js" />
-        <option value="$PROJECT_DIR$/natural-earth/Makefile" />
         <option value="$PROJECT_DIR$/critter-world-map.css" />
         <option value="$PROJECT_DIR$/libs/d3.geo.projection.miller.js" />
-        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/junk.js" />
+        <option value="$PROJECT_DIR$/natural-earth/extractPostalAndAdm1Code.js" />
+        <option value="$PROJECT_DIR$/natural-earth/extractUSPostalAndAdm1Code.js" />
+        <option value="$PROJECT_DIR$/natural-earth/Makefile" />
         <option value="$PROJECT_DIR$/critter-world-map.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -400,6 +479,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="topojson" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="critter-world-map" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="critter-world-map" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="topojson" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="provinces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="critter-world-map" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="critter-world-map" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="natural-earth" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -428,11 +539,12 @@
     <property name="options.lastSelected" value="project.scopes" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../d3playground" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/natural-earth" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -514,7 +626,11 @@
       <created>1376003006383</created>
       <updated>1376003006383</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Further tweaking done during service / endpoint filtering implementation.">
+      <created>1376355739057</created>
+      <updated>1376355739057</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -523,8 +639,8 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15608987" sideWeight="0.86707884" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13598739" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15608987" sideWeight="0.7194745" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -533,7 +649,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2805255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5615063" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -582,7 +698,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes implemented during data load work." />
+    <option name="LAST_COMMIT_MESSAGE" value="Further tweaking done during service / endpoint filtering implementation." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -604,6 +720,7 @@
     <MESSAGE value="Baseline global choropleth map, with a lot of useful features." />
     <MESSAGE value="Several firefox fixes, including a simplified world map." />
     <MESSAGE value="Minor fixes implemented during data load work." />
+    <MESSAGE value="Further tweaking done during service / endpoint filtering implementation." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -623,11 +740,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/natural-earth/countries.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="337" selection-end="337" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/topojson/world.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="0" selection-start="519072" selection-end="519072" vertical-scroll-proportion="0.0">
@@ -649,21 +761,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/natural-earth/countries.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="337" selection-end="337" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="51" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/natural-earth/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="10" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0" />
+        <state line="14" column="51" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/d3.v3.js">
@@ -680,23 +780,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/d3.geo.projection.v0.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="44" selection-start="32054" selection-end="32054" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/critter-world-map.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="101" selection-start="1333" selection-end="1333" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -708,16 +794,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/libs/d3.geo.projection.v0.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="86" selection-start="949" selection-end="949" vertical-scroll-proportion="-4.25">
+        <state line="1" column="44" selection-start="32054" selection-end="32054" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/critter-world-map.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="38" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/junk.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/natural-earth/countries.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="84" selection-start="337" selection-end="337" vertical-scroll-proportion="0.1421801">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/natural-earth/extractUSPostalAndAdm1Code.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="35" selection-start="296" selection-end="296" vertical-scroll-proportion="-5.1923075">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/natural-earth/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="94" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/critter-world-map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="822" column="128" selection-start="29599" selection-end="29599" vertical-scroll-proportion="0.27839115">
+        <state line="478" column="56" selection-start="17132" selection-end="17132" vertical-scroll-proportion="-17.038462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="12" selection-start="1661" selection-end="1661" vertical-scroll-proportion="0.5065789">
           <folding />
         </state>
       </provider>

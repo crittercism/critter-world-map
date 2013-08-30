@@ -16,8 +16,8 @@
     <option>volume</option>
 </select>
     <script>
-    //var width = 960, height = 512;
-    var width = 500, height = 250;
+    var width = 960, height = 512;
+    //var width = 500, height = 250;
 
     var colors1 = d3.scale.ordinal()
             .range(["#bae4b3","#74c476","#31a354","#006d2c"]);
@@ -55,6 +55,8 @@
             .width(width)
             .height(height)
             .colors(colors1)
+            //.deepLink('GB')
+            .deepLink('US','USA-3521')
             .topojsonPrefix('/topojson')
             .keyTitle('Avg Latency')
             .toolTipTitle('Latency')
@@ -68,7 +70,7 @@
             .zoomDataLoader(function(type,id,dataset,name,callback) {
                 setTimeout(function() {
                     console.log('load data for ',type,id,name,dataset);
-                    if (dataset ==1) {
+                    if (dataset == 1) {
                         if (id == 'GB') {
                             return callback && callback(id, dataset, {
                                 'GBR-2042' : 42,
@@ -81,7 +83,11 @@
                                 'BEL-3478' : 209,
                                 'BEL-2' : 699
                             });
-                        } else if (type=='province' && id == 'CA') {
+                        } else if (id == 'US') {
+                            return callback && callback(id, dataset, {
+                                'USA-3521' : 108
+                            });
+                        } else if (type=='province' && id == 'USA-3521') {
                             return callback && callback(id, dataset, {
                                 '06075' : 108,
                                 '06081' : 209,
@@ -109,7 +115,11 @@
                                 'BEL-3478' : 16,
                                 'BEL-2' : 18
                             });
-                        } else if (type=='province' && id == 'CA') {
+                        } else if (id == 'US') {
+                            return callback && callback(id, dataset, {
+                                'USA-3521' : 108
+                            });
+                        } else if (type=='province' && id == 'USA-3521') {
                             return callback && callback(id, dataset, {
                                 '06075' : 444,
                                 '06081' : 222,

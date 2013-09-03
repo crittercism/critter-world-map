@@ -96,7 +96,7 @@ function worldmap() {
         IE && fixLineWidths();
 
         renderLoadingAnimation();
-        zoomDataLoader && zoomDataLoader('world',null,dataset,'Global',populateGlobalData);
+        zoomDataLoader && zoomDataLoader('world',null,null,dataset,'Global',populateGlobalData);
         my.deepLink();
     }
 
@@ -266,7 +266,7 @@ function worldmap() {
             showMinusButton();
 
             onZoom && onZoom('country', zoomedRegionName(), iso_a2);
-            zoomDataPreloader && zoomDataPreloader('country', iso_a2, dataset, zoomedRegionName());
+            zoomDataPreloader && zoomDataPreloader('country', iso_a2, null, dataset, zoomedRegionName());
 
             d3.json(topojsonPrefix+"/provinces/provinces_"+iso_a2+".json", function(error, ptopo) {
                 if (error) {
@@ -279,7 +279,7 @@ function worldmap() {
                     lastCountryZoom.topojson = ptopo;
                     renderCountry();
                     renderLoadingAnimation();
-                    zoomDataLoader && zoomDataLoader('country', iso_a2, dataset, zoomedRegionName(), populateProvinceData);
+                    zoomDataLoader && zoomDataLoader('country', iso_a2, null, dataset, zoomedRegionName(), populateProvinceData);
                     my.deepLink();
                 }
             });
@@ -338,7 +338,7 @@ function worldmap() {
                     lastProvinceZoom.topojson = ctopo;
                     renderCounties();
                     renderLoadingAnimation();
-                    zoomDataLoader && zoomDataLoader('province', adm1_code, dataset, zoomedRegionName(), populateCountyData);
+                    zoomDataLoader && zoomDataLoader('province', lastCountryZoom.id, adm1_code, dataset, zoomedRegionName(), populateCountyData);
                     my.deepLink();
                 }
             });
@@ -474,9 +474,9 @@ function worldmap() {
 
     // note the dataset check - dataset is changed when the map is re-populated
     // and allows you to ignore callbacks from previous datasets
-    function populateGlobalData(id, d, values) {
-        DEVMODE && console.log('populateGlobalData',id,d,values);
-        if (values && d == dataset) {
+    function populateGlobalData(countryId, provinceId, d, values) {
+        DEVMODE && console.log('populateGlobalData', countryId, provinceId, d, values);
+        if (d == dataset) {
             globalZoom.data = values;
             if (lastCountryZoom == null) {
                 setColorStyles('.country', 'iso_a2', values);
@@ -486,9 +486,9 @@ function worldmap() {
         }
     }
 
-    function populateProvinceData(id, d, values) {
-        DEVMODE && console.log('populateProvinceData',id,d,values);
-        if (lastCountryZoom && lastCountryZoom.id == id && d == dataset) {
+    function populateProvinceData(countryId, provinceId, d, values) {
+        DEVMODE && console.log('populateProvinceData', countryId, provinceId, d, values);
+        if (lastCountryZoom && lastCountryZoom.id == countryId && d == dataset) {
             lastCountryZoom.data = values;
             if (lastProvinceZoom == null) {
                 setColorStyles('.province', 'adm1_code', values);
@@ -498,9 +498,9 @@ function worldmap() {
         }
     }
 
-    function populateCountyData(id, d, values) {
-        DEVMODE && console.log('populateCountyData',id,d,values);
-        if (lastProvinceZoom && lastProvinceZoom.id == id && d == dataset) {
+    function populateCountyData(countryId, provinceId, d, values) {
+        DEVMODE && console.log('populateCountyData',countryId, provinceId, d, values);
+        if (lastProvinceZoom && lastProvinceZoom.id == provinceId && d == dataset) {
             lastProvinceZoom.data = values;
             setColorStyles('.county', 'FIPS', values);
         } else {
@@ -530,6 +530,14 @@ function worldmap() {
                 });
             renderKey();
         } else {
+            // Blank any coloured in regions... if no values.
+            svg.selectAll(cssClass).style('fill',function (d) {
+                // avoid clearing the fill:none on sea areas of US counties
+                if (cssClass == '.county' && !d.properties.COUNTY) {
+                    return 'none';
+                }
+                return '';
+            });
             renderMissingDataKey();
         }
     }
@@ -787,7 +795,7 @@ function worldmap() {
     var load = my.load = function() {
         loaded = true;
         onZoom && onZoom('world', 'World', null);
-        zoomDataPreloader && zoomDataPreloader('world', null, dataset, 'World');
+        zoomDataPreloader && zoomDataPreloader('world', null, null, dataset, 'World');
         // For the moment, we have a different view of the world for Firefox users
         // They can't handle the polygons of the real world:
         var json = firefox ? '/world-moz.json' : '/world.json';
@@ -877,14 +885,14 @@ function worldmap() {
         if (loaded) {
             dataset = n;
             globalZoom.data = null;
-            zoomDataLoader && zoomDataLoader('world',null,dataset,'Global',populateGlobalData);
+            zoomDataLoader && zoomDataLoader('world', null, null, dataset,'Global',populateGlobalData);
             if (lastCountryZoom) {
                 lastCountryZoom.data = null;
-                zoomDataLoader && zoomDataLoader('country', lastCountryZoom.id, dataset, zoomedRegionName(), populateProvinceData);
+                zoomDataLoader && zoomDataLoader('country', lastCountryZoom.id, null, dataset, zoomedRegionName(), populateProvinceData);
             }
             if (lastProvinceZoom) {
                 lastProvinceZoom.data = null;
-                zoomDataLoader && zoomDataLoader('province', lastProvinceZoom.id, dataset, zoomedRegionName(), populateCountyData);
+                zoomDataLoader && zoomDataLoader('province', lastCountryZoom.id, lastProvinceZoom.id, dataset, zoomedRegionName(), populateCountyData);
             }
             renderLoadingAnimation();
         }

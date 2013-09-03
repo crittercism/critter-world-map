@@ -64,75 +64,75 @@
             .format(interval)
             .onZoom(updateTitle)
             .dataset(0)
-            .zoomDataPreloader(function(type,id,dataset,name) {
-                console.log('preload data for ',type,id);
+            .zoomDataPreloader(function(type,countryId,provinceId,dataset,name) {
+                console.log('preload data for ',type,countryId,provinceId);
             })
-            .zoomDataLoader(function(type,id,dataset,name,callback) {
+            .zoomDataLoader(function(type,countryId,provinceId,dataset,name,callback) {
                 setTimeout(function() {
-                    console.log('load data for ',type,id,name,dataset);
+                    console.log('load data for ',type,countryId,provinceId,name,dataset);
                     if (dataset == 1) {
-                        if (id == 'GB') {
-                            return callback && callback(id, dataset, {
+                        if (countryId == 'GB') {
+                            return callback && callback(countryId,provinceId, dataset, {
                                 'GBR-2042' : 42,
                                 'GBR-2317' : 21,
                                 'GBR-2755' : 103
                             });
-                        } else if (id == 'BE') {
-                            return callback && callback(id, dataset, {
+                        } else if (countryId == 'BE') {
+                            return callback && callback(countryId,provinceId, dataset, {
                                 'BEL-3479' : 108,
                                 'BEL-3478' : 209,
                                 'BEL-2' : 699
                             });
-                        } else if (id == 'US') {
-                            return callback && callback(id, dataset, {
+                        } else if (type=='country' && countryId == 'US') {
+                            return callback && callback(countryId,provinceId, dataset, {
                                 'USA-3521' : 108
                             });
-                        } else if (type=='province' && id == 'USA-3521') {
-                            return callback && callback(id, dataset, {
+                        } else if (type=='province' && provinceId == 'USA-3521') {
+                            return callback && callback(countryId,provinceId, dataset, {
                                 '06075' : 108,
                                 '06081' : 209,
                                 '06087' : 699
                             });
                         } else if (id == null) {
-                            return callback && callback(id, dataset, {
+                            return callback && callback(countryId,provinceId, dataset, {
                                 'GB' : 50,
                                 'US' : 209,
                                 'BE' : 699
                             });
                         } else {
-                            return callback && callback(id,dataset,null);
+                            return callback && callback(countryId,provinceId,dataset,null);
                         }
                     } else {
-                        if (id == 'GB') {
-                            return callback && callback(id, dataset, {
+                        if (countryId == 'GB') {
+                            return callback && callback(countryId,provinceId, dataset, {
                                 'GBR-2042' : 12,
                                 'GBR-2317' : 10,
                                 'GBR-2755' : 111
                             });
-                        } else if (id == 'BE') {
-                            return callback && callback(id, dataset, {
+                        } else if (countryId == 'BE') {
+                            return callback && callback(countryId,provinceId, dataset, {
                                 'BEL-3479' : 15,
                                 'BEL-3478' : 16,
                                 'BEL-2' : 18
                             });
-                        } else if (id == 'US') {
-                            return callback && callback(id, dataset, {
+                        } else if (type=='country' && countryId == 'US') {
+                            return callback && callback(countryId,provinceId, dataset, {
                                 'USA-3521' : 108
                             });
-                        } else if (type=='province' && id == 'USA-3521') {
-                            return callback && callback(id, dataset, {
+                        } else if (type=='province' && provinceId == 'USA-3521') {
+                            return callback && callback(countryId,provinceId, dataset, {
                                 '06075' : 444,
                                 '06081' : 222,
                                 '06087' : 111
                             });
-                        } else if (id == null) {
-                            return callback && callback(id, dataset, {
+                        } else if (countryId == null) {
+                            return callback && callback(countryId,provinceId, dataset, {
                                 'GB' : 12,
                                 'US' : 15,
                                 'BE' : 42
                             });
                         } else {
-                            return callback && callback(id,dataset,null);
+                            return callback && callback(countryId,provinceId,dataset,null);
                         }
                     }
                 },2000);

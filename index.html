@@ -28,6 +28,8 @@
                 "#fe9929",
                 "#cc4c02"]);
 
+    var dataset = 0;
+
     var intervalMS = function(d) {
         return d3.format(",.0f")(d) + ' ms';
     };
@@ -70,7 +72,7 @@
             .zoomDataLoader(function(type,countryId,provinceId,dataset,name,callback) {
                 setTimeout(function() {
                     console.log('load data for ',type,countryId,provinceId,name,dataset);
-                    if (dataset == 1) {
+                    if (dataset == 0) {
                         if (countryId == 'GB') {
                             return callback && callback(countryId,provinceId, dataset, {
                                 'GBR-2042' : 42,
@@ -93,7 +95,7 @@
                                 '06081' : 209,
                                 '06087' : 699
                             });
-                        } else if (id == null) {
+                        } else if (countryId == null) {
                             return callback && callback(countryId,provinceId, dataset, {
                                 'GB' : 50,
                                 'US' : 209,
@@ -102,7 +104,8 @@
                         } else {
                             return callback && callback(countryId,provinceId,dataset,null);
                         }
-                    } else {
+                    } if (dataset == 1) {
+                        console.log('in dataset 1 branch');
                         if (countryId == 'GB') {
                             return callback && callback(countryId,provinceId, dataset, {
                                 'GBR-2042' : 12,
@@ -134,31 +137,35 @@
                         } else {
                             return callback && callback(countryId,provinceId,dataset,null);
                         }
+                    } else {
+                        return callback && callback(countryId,provinceId, dataset, null);
                     }
-                },2000);
+                },0);
             });
 
     var svg = d3.select("body").append("svg").call(map);
 
     d3.select(self.frameElement).style("height", height + "px");
 
+
     d3.select('#chooser').on('change',function() {
          var target = d3.event.target;
-         var dataset = target.selectedIndex +1;
-         if (dataset == 1) {
+         dataset++;
+         console.log('dataset is now', dataset, dataset%2);
+         if (dataset%2 == 0) {
              map.colors(colors1)
                      .keyTitle('Avg Latency')
                      .toolTipTitle('Latency')
                      .toolTipColor("#74c476")
                      .format(format1)
-                     .dataset(1);
+                     .dataset(dataset);
          } else {
              map.colors(colors2)
                 .keyTitle('Avg Volume')
                 .toolTipTitle('Volume')
                 .toolTipColor("#fed98e")
                 .format(format2)
-                .dataset(2);
+                .dataset(dataset);
          }
 
     });

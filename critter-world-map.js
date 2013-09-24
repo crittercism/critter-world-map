@@ -313,7 +313,7 @@ function worldmap() {
      * In the future, we may need to do something similar for Australia, Canada and other states.
      */
     function zoomToProvince(feature) {
-        var adm1_code, name;
+        var adm1_code, name, currentCountryId = lastCountryZoom.id;
         if (feature && feature.properties && feature.properties.adm1_code) {
             adm1_code = feature.properties.adm1_code;
             name = feature.properties.name;
@@ -325,9 +325,9 @@ function worldmap() {
             preRenderCounties();
 
             onZoom && onZoom('province', zoomedRegionName(), adm1_code);
-            zoomDataPreloader && zoomDataPreloader('province', adm1_code, dataset, zoomedRegionName());
+            zoomDataPreloader && zoomDataPreloader('province', currentCountryId, adm1_code, dataset, zoomedRegionName());
 
-            d3.json(topojsonPrefix+"/counties/counties_"+adm1_code.toLowerCase()+".json", function(error, ctopo) {
+            d3.json(topojsonPrefix+"/counties/counties_"+adm1_code+".json", function(error, ctopo) {
                 if (error) {
                     DEVMODE && console.log(error);
                     return;
@@ -338,7 +338,7 @@ function worldmap() {
                     lastProvinceZoom.topojson = ctopo;
                     renderCounties();
                     renderLoadingAnimation();
-                    zoomDataLoader && zoomDataLoader('province', lastCountryZoom.id, adm1_code, dataset, zoomedRegionName(), populateCountyData);
+                    zoomDataLoader && zoomDataLoader('province', currentCountryId, adm1_code, dataset, zoomedRegionName(), populateCountyData);
                     my.deepLink();
                 }
             });
@@ -353,12 +353,10 @@ function worldmap() {
         if (d && d.properties) {
             if (d.properties.FIPS) {
                 fips = d.properties.FIPS;
-                zoom(d, ROGUE_US_COUNTIES, fips, 0.3);
+                zoom(d, ROGUE_US_COUNTIES, fips, 0.5);
                 if (CALIFORNIA_HACK.indexOf(fips) != -1) {
                     // we're zoomed right in on SF... hack by clipping the
                     // US
-                    console.log('appending clip path');
-
                     map.append("defs").append("clipPath")
                         .attr("id", "calHackClip")
                         .append("path")
@@ -375,7 +373,8 @@ function worldmap() {
                 }
             } else if (d.properties.adm1_code) {
                 adm1_code = d.properties.adm1_code;
-                zoom(d, ROGUE_PROVINCES_BY_ADM1_CODE, adm1_code, 0.3);
+                DEVMODE && console.log('Extra zoom on',adm1_code);
+                zoom(d, ROGUE_PROVINCES_BY_ADM1_CODE, adm1_code, 0.5);
             }
         }
     }
@@ -413,12 +412,7 @@ function worldmap() {
 
             // re-render the country selection and data
             renderCountry();
-            if (lastCountryZoom.data) {
-                setColorStyles('.province', 'adm1_code', lastCountryZoom.data);
-            } else {
-                DEVMODE && console.log('no lastCountryZoom.data');
-                renderMissingDataKey();
-            }
+            setColorStyles('.province', 'adm1_code', lastCountryZoom.data);
 
             onZoom && onZoom('country', zoomedRegionName(), lastCountryZoom.id);
             scaleMap();
@@ -448,12 +442,8 @@ function worldmap() {
         map.selectAll(".cboundary").classed('zoomed',false);
 
         // re-render global data
-        if (globalZoom.data) {
-            setColorStyles('.country', 'iso_a2', globalZoom.data);
-        } else {
-            DEVMODE && console.log('no globalZoom.data');
-            renderMissingDataKey();
-        }
+        setColorStyles('.country', 'iso_a2', globalZoom.data);
+
         hideMinusButton();
         onZoom && onZoom('world', zoomedRegionName(), null);
         scaleMap();
@@ -508,19 +498,31 @@ function worldmap() {
         }
     }
 
+    function isNumber(obj) {
+        return toString.call(obj) == '[object Number]';
+    };
+
     function setColorStyles(cssClass, key, values) {
         DEVMODE && console.log('setColorStyles',cssClass, key, values);
         if (values) {
             var extent = d3.extent(d3.values(values));
             extent[0] = Math.floor(extent[0] / 10) * 10;
             extent[1] = Math.ceil(extent[1] / 10) * 10;
+            // If we don't have a useful range, but want to colour in some countries as zero
+            // force the range to 4. Just because it looks good on the key.
+            // d3 scale domain fails to work if the extents are equal.
+            if (extent[0] == extent[1]) {
+                extent[1] += 4;
+            }
             quantize.domain(extent);
             svg.selectAll(cssClass)
                 .style("fill", function (d) {
-                    if (d.properties && values && d.properties[key] && values[d.properties[key]]) {
+                    if (d.properties && values && d.properties[key] && isNumber(values[d.properties[key]])) {
                         var color = quantize(values[d.properties[key]]);
+                        DEVMODE && console.log('setting color to '+color+' for ' + d.properties[key]+' value is '+values[d.properties[key]]);
                         return color;
                     } else {
+                        DEVMODE && console.log('setting color to none for ' + d.properties[key]);
                         // avoid clearing the fill:none on sea areas of US counties
                         if (cssClass == '.county' && !d.properties.COUNTY) {
                             return 'none';
@@ -554,6 +556,17 @@ function worldmap() {
 
         if (d.properties.name) {
             name = d.properties.name;
+            if (name == 'France') {
+                // The french are special... because of their overseas departments.
+                m = d3.mouse(svg.node());
+                var departments = ROGUE_STATES['FR'];
+                for (i = 0; i < departments.length; i++) {
+                    if (isPointInBounds(departments[i].click, m)) {
+                        name = departments[i].name;
+                        break;
+                    }
+                }
+            }
         } else if (d.properties.COUNTY) {
             name = d.properties.COUNTY;
         } else {
@@ -675,7 +688,7 @@ function worldmap() {
     function zoom(feature, rogueRegions, id, scalePadding) {
         var m, t, bounds, i;
         if (!feature) {
-            console.log('failing to zoom, cause no feature!');
+            DEVMODE && console.log('failing to zoom, cause no feature!');
         }
         if (d3.keys(rogueRegions).indexOf(id) != -1) {
             if (rogueRegions[id].length == 1 || !d3.event) {
@@ -731,8 +744,12 @@ function worldmap() {
     function renderKey() {
         var d = quantize.domain(),
             r = quantize.range(),
-            n = Math.round((d[1] - d[0])/r.length), i, label, l  = r.length, kw = 125;
-
+            n, i, label, l  = r.length, kw = 125;
+        if (d[1] - d[0] > (r.length*10)) {
+            n = Math.round((d[1] - d[0])/r.length);
+        } else {
+            n = ((d[1] - d[0])/r.length).toFixed(1);
+        }
         var key = d3.select('.key');
         key.selectAll('.keyContainer').remove();
         var container = key.append('g').attr('transform','translate(15 0)').attr('class','keyContainer');
@@ -986,15 +1003,37 @@ function worldmap() {
         // just handled the big ones for now:
         // http://en.wikipedia.org/wiki/Overseas_departments_and_territories_of_France
         'FR' : [
-            {
+            {   // France
+                name: 'France',
                 click: [[-9,40],
                     [10,51]],
                 bounds: [[-7,42],
                     [8,51]]
             },
-            {
+            {   // French guiana
+                name: 'French Guiana',
                 click: [[-56,2],[-49,7]],
                 bounds: [[-56,2],[-49,7]]
+            },
+            {   // martinique
+                name: 'Martinique',
+                click: [[-62,14],[-60,15]],
+                bounds: [[-62,14],[-60,15]]
+            },
+            {   // guadaloupe
+                name: 'Guadaloupe',
+                click: [[-62,16],[-61,17]],
+                bounds: [[-62,16],[-61,17]]
+            },
+            {
+                name: 'Réunion',
+                click: [[54,-22],[56,-20]],
+                bounds: [[54,-22],[56,-20]]
+            },
+            {
+                name: 'Mayotte',
+                click: [[45,-13],[46,-12]],
+                bounds: [[45,-13],[46,-12]]
             }
         ],
         'RU' : [
@@ -1034,8 +1073,21 @@ function worldmap() {
                 bounds: [[3, 50],
                     [8,54]]
             }
+        ],
+        'ZA': [
+            {
+                click: [[14, -36],
+                    [36,-21]],
+                bounds: [[14, -36],
+                    [36,-21]]
+            },
+            {
+                click: [[37, -47],
+                    [38,-46]],
+                bounds: [[37, -47],
+                    [38,-46]]
+            },
         ]
-        // ZA
     };
 
     // alaska has a few counties containing crazy islands...
@@ -1058,7 +1110,21 @@ function worldmap() {
 
     // TODO(prs): There is one more left in alaska, and one more left in russia.
     var ROGUE_PROVINCES_BY_ADM1_CODE = {
-        // haven't found any of these yet...
+        'CAN-635': [{ // northwestern territories, canada
+            bounds: [[-125,64],[-100,73]]
+        }],
+        'CAN-634': [{ // nunavut, canada
+            bounds: [[-109,65],[-81,75]]
+        }],
+        'CAN-687': [{ // nunavut, canada
+            bounds: [[-73,46],[-72,53]]
+        }],
+        'JPN-1860': [{ // tokyo, japan
+            bounds: [[139.4,35.5],[139.4,35.5]]
+        }],
+        'RUS-2321': [{ // chukci autonomous okrug, easternmost region of russia
+            bounds: [[158,61],[176,68]]
+        }]
     };
 
     // curses... those pesky aleutian islands!

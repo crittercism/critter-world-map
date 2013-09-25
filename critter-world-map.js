@@ -238,6 +238,7 @@ function worldmap() {
         var e = d3.event,
             target = d3.select(e.target),
             d = target.datum();
+
         zoomToCountry(d);
     }
 
@@ -256,6 +257,7 @@ function worldmap() {
             iso_a2 = feature.properties.iso_a2;
             name = feature.properties.name;
 
+
             lastProvinceZoom = null;
             zoom(feature, ROGUE_STATES, iso_a2, 0.85);
             lastCountryZoom = currentZoom;
@@ -264,6 +266,12 @@ function worldmap() {
             preRenderCountry();
 
             showMinusButton();
+
+            // disable mouseover events for the selected province, (but not
+            // neighbouring countries).
+            d3.selectAll('.country').style('pointer-events', function (d) {
+                return d.properties.iso_a2 == iso_a2 ? 'none' : 'all';
+            });
 
             onZoom && onZoom('country', zoomedRegionName(), iso_a2);
             zoomDataPreloader && zoomDataPreloader('country', iso_a2, null, dataset, zoomedRegionName());
@@ -293,6 +301,7 @@ function worldmap() {
         var e = d3.event,
             target = d3.select(e.target),
             d = target.datum(), iso_a2, name;
+
         zoomToProvince(d);
     }
 
@@ -323,6 +332,15 @@ function worldmap() {
             lastProvinceZoom.name = name;
 
             preRenderCounties();
+
+            // disable mouseover events for the selected province, (but not
+            // neighbouring countries).
+            d3.selectAll('.country').style('pointer-events', function (d) {
+                return d.properties.iso_a2 == currentCountryId ? 'none' : 'all';
+            });
+            d3.selectAll('.province').style('pointer-events', function (d) {
+                return d.properties.adm1_code == adm1_code ? 'none' : 'all';
+            });
 
             onZoom && onZoom('province', zoomedRegionName(), adm1_code);
             zoomDataPreloader && zoomDataPreloader('province', currentCountryId, adm1_code, dataset, zoomedRegionName());
@@ -414,6 +432,9 @@ function worldmap() {
             renderCountry();
             setColorStyles('.province', 'adm1_code', lastCountryZoom.data);
 
+            // re-enable mouseover events and clicks for all provinces
+            map.selectAll('.province').style('pointer-events','fill')
+
             onZoom && onZoom('country', zoomedRegionName(), lastCountryZoom.id);
             scaleMap();
 
@@ -438,7 +459,9 @@ function worldmap() {
         map.selectAll(".pboundary").remove();
         map.selectAll(".ctboundary").remove();
         map.selectAll(".cboundary.zoomed").remove();
-        map.selectAll(".country").classed('backgrounded',false);
+        map.selectAll(".country").classed('backgrounded',false) // remove background greyed out nature
+            .style('pointer-events','fill'); // re-enable mouseover events and clicks
+
         map.selectAll(".cboundary").classed('zoomed',false);
 
         // re-render global data
@@ -519,10 +542,10 @@ function worldmap() {
                 .style("fill", function (d) {
                     if (d.properties && values && d.properties[key] && isNumber(values[d.properties[key]])) {
                         var color = quantize(values[d.properties[key]]);
-                        DEVMODE && console.log('setting color to '+color+' for ' + d.properties[key]+' value is '+values[d.properties[key]]);
+                        //DEVMODE && console.log('setting color to '+color+' for ' + d.properties[key]+' value is '+values[d.properties[key]]);
                         return color;
                     } else {
-                        DEVMODE && console.log('setting color to none for ' + d.properties[key]);
+                        //DEVMODE && console.log('setting color to none for ' + d.properties[key]);
                         // avoid clearing the fill:none on sea areas of US counties
                         if (cssClass == '.county' && !d.properties.COUNTY) {
                             return 'none';

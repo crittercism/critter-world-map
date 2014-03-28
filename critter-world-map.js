@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) 2013, Crittercism, Inc
+ * All rights reserved.
+ *
+ * Please see included LICENSE.txt
+ *
  * Note that this file lives in the critter-world-map github repo. If found
  * elsewhere, it is a copy and you should make sure changes will go back
  * there, which will help us if we want to use this map in blog posts, marketing

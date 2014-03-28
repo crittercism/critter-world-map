@@ -41,8 +41,8 @@ function worldmap() {
     var path = d3.geo.path()
         .projection(projection);
 
-    var currentZoom = null;
     var globalZoom = {};
+    var currentZoom = globalZoom;
     var lastCountryZoom = null;
     var lastProvinceZoom = null;
 
@@ -96,7 +96,7 @@ function worldmap() {
         IE && fixLineWidths();
 
         renderLoadingAnimation();
-        zoomDataLoader && zoomDataLoader('world',null,null,dataset,'Global',populateGlobalData);
+        zoomDataLoader && zoomDataLoader('world',null,null,dataset,'Global',populateGlobalData.bind(this));
         my.deepLink();
     }
 
@@ -273,7 +273,10 @@ function worldmap() {
                 return d.properties.iso_a2 == iso_a2 ? 'none' : 'all';
             });
 
-            onZoom && onZoom('country', zoomedRegionName(), iso_a2);
+            // trigger the onzoom handler, but not if we're about to deep link down to a province
+            if (!deepLink || deepLink.province == null) {
+                onZoom && onZoom('country', zoomedRegionName(), iso_a2);
+            }
             zoomDataPreloader && zoomDataPreloader('country', iso_a2, null, dataset, zoomedRegionName());
 
             d3.json(topojsonPrefix+"/provinces/provinces_"+iso_a2+".json", function(error, ptopo) {
@@ -351,7 +354,7 @@ function worldmap() {
                     return;
                 }
                 // just in case there's been another click zoom before the load...
-                if (currentZoom.id = adm1_code) {
+                if (currentZoom.id === adm1_code) {
                     currentZoom.topojson = ctopo;
                     lastProvinceZoom.topojson = ctopo;
                     renderCounties();
@@ -444,32 +447,34 @@ function worldmap() {
     }
 
     function zoomOutWorld() {
-        killCaliforniaHack();
+        if (currentZoom !== globalZoom) {
+            killCaliforniaHack();
 
-        currentZoom = globalZoom;
-        lastProvinceZoom = null;
-        lastCountryZoom = null;
+            currentZoom = globalZoom;
+            lastProvinceZoom = null;
+            lastCountryZoom = null;
 
-        // remove any province clipping shapes.
-        map.selectAll('#pClip').remove();
+            // remove any province clipping shapes.
+            map.selectAll('#pClip').remove();
 
-        // stop displaying any zoomed in provinces and/or counties!
-        map.selectAll(".province").remove();
-        map.selectAll(".county").remove();
-        map.selectAll(".pboundary").remove();
-        map.selectAll(".ctboundary").remove();
-        map.selectAll(".cboundary.zoomed").remove();
-        map.selectAll(".country").classed('backgrounded',false) // remove background greyed out nature
-            .style('pointer-events','fill'); // re-enable mouseover events and clicks
+            // stop displaying any zoomed in provinces and/or counties!
+            map.selectAll(".province").remove();
+            map.selectAll(".county").remove();
+            map.selectAll(".pboundary").remove();
+            map.selectAll(".ctboundary").remove();
+            map.selectAll(".cboundary.zoomed").remove();
+            map.selectAll(".country").classed('backgrounded',false) // remove background greyed out nature
+                .style('pointer-events','fill'); // re-enable mouseover events and clicks
 
-        map.selectAll(".cboundary").classed('zoomed',false);
+            map.selectAll(".cboundary").classed('zoomed',false);
 
-        // re-render global data
-        setColorStyles('.country', 'iso_a2', globalZoom.data);
+            // re-render global data
+            setColorStyles('.country', 'iso_a2', globalZoom.data);
 
-        hideMinusButton();
-        onZoom && onZoom('world', zoomedRegionName(), null);
-        scaleMap();
+            hideMinusButton();
+            onZoom && onZoom('world', zoomedRegionName(), null);
+            scaleMap();
+        }
     }
 
     function zoomedRegionName() {
@@ -522,15 +527,15 @@ function worldmap() {
     }
 
     function isNumber(obj) {
-        return toString.call(obj) == '[object Number]';
+        return (typeof obj === "number");
     };
 
     function setColorStyles(cssClass, key, values) {
         DEVMODE && console.log('setColorStyles',cssClass, key, values);
         if (values) {
             var extent = d3.extent(d3.values(values));
-            extent[0] = Math.floor(extent[0] / 10) * 10;
-            extent[1] = Math.ceil(extent[1] / 10) * 10;
+            extent[0] = Math.floor(extent[0]);
+            extent[1] = Math.ceil(extent[1]);
             // If we don't have a useful range, but want to colour in some countries as zero
             // force the range to 4. Just because it looks good on the key.
             // d3 scale domain fails to work if the extents are equal.
@@ -947,7 +952,7 @@ function worldmap() {
      */
     my.deepLink = function(country,province,county) {
         DEVMODE && console.log('deeplink',deepLink);
-        if (country) {
+        if (country || province) {
             deepLink = {
                 country: country,
                 province: province,
@@ -1003,6 +1008,15 @@ function worldmap() {
     my.debug = function(b) {
         DEVMODE = b;
         return my;
+    }
+
+    my.getSelectedCountryId = function() {
+        if (lastCountryZoom) {
+            return lastCountryZoom.id
+        }
+        else {
+            return null; //world
+        }
     }
 
     /**

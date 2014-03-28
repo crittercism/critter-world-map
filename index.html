@@ -11,22 +11,20 @@
 </head>
 <body>
 <h1>Test map: </h1>
+<svg></svg>
+<br>
 <select id='chooser'>
     <option>latency</option>
     <option>volume</option>
 </select>
-    <script>
+
+<script>
     var width = 960, height = 512;
     //var width = 500, height = 250;
 
     var colors1 = d3.scale.ordinal()
             .range(["#bae4b3","#74c476","#31a354","#006d2c"]);
-    var colors2 = d3.scale.ordinal()
-            .range([
-                "#ffffd4",
-                "#fed98e",
-                "#fe9929",
-                "#cc4c02"]);
+    var colors2 = d3.scale.ordinal().range(["#f9d49a", "#f3ab3b", "#ee8e24", "#e8730e"]);
 
     var dataset = 0;
 
@@ -58,7 +56,7 @@
             .height(height)
             .colors(colors1)
             //.deepLink('GB')
-            .deepLink('US','USA-3521')
+            //.deepLink('US','USA-3521')
             .topojsonPrefix('/topojson')
             .keyTitle('Avg Latency')
             .toolTipTitle('Latency')
@@ -72,81 +70,41 @@
             .zoomDataLoader(function(type,countryId,provinceId,dataset,name,callback) {
                 setTimeout(function() {
                     console.log('load data for ',type,countryId,provinceId,name,dataset);
-                    if (dataset == 0) {
-                        if (countryId == 'GB') {
-                            return callback && callback(countryId,provinceId, dataset, {
-                                'GBR-2042' : 42,
-                                'GBR-2317' : 21,
-                                'GBR-2755' : 103
-                            });
-                        } else if (countryId == 'BE') {
-                            return callback && callback(countryId,provinceId, dataset, {
-                                'BEL-3479' : 108,
-                                'BEL-3478' : 209,
-                                'BEL-2' : 699
-                            });
-                        } else if (type=='country' && countryId == 'US') {
-                            return callback && callback(countryId,provinceId, dataset, {
-                                'USA-3521' : 108
-                            });
-                        } else if (type=='province' && provinceId == 'USA-3521') {
-                            return callback && callback(countryId,provinceId, dataset, {
-                                '06075' : 108,
-                                '06081' : 209,
-                                '06087' : 699
-                            });
-                        } else if (countryId == null) {
-                            return callback && callback(countryId,provinceId, dataset, {
-                                'GB' : 50,
-                                'US' : 209,
-                                'BE' : 699
-                            });
-                        } else {
-                            return callback && callback(countryId,provinceId,dataset,null);
-                        }
-                    } if (dataset == 1) {
-                        console.log('in dataset 1 branch');
-                        if (countryId == 'GB') {
-                            return callback && callback(countryId,provinceId, dataset, {
-                                'GBR-2042' : 12,
-                                'GBR-2317' : 10,
-                                'GBR-2755' : 111
-                            });
-                        } else if (countryId == 'BE') {
-                            return callback && callback(countryId,provinceId, dataset, {
-                                'BEL-3479' : 15,
-                                'BEL-3478' : 16,
-                                'BEL-2' : 18
-                            });
-                        } else if (type=='country' && countryId == 'US') {
-                            return callback && callback(countryId,provinceId, dataset, {
-                                'USA-3521' : 108
-                            });
-                        } else if (type=='province' && provinceId == 'USA-3521') {
-                            return callback && callback(countryId,provinceId, dataset, {
-                                '06075' : 444,
-                                '06081' : 222,
-                                '06087' : 111
-                            });
-                        } else if (countryId == null) {
-                            return callback && callback(countryId,provinceId, dataset, {
-                                'GB' : 12,
-                                'US' : 15,
-                                'BE' : 42
-                            });
-                        } else {
-                            return callback && callback(countryId,provinceId,dataset,null);
-                        }
+                    if (countryId == 'GB') {
+                        return callback && callback(countryId,provinceId, dataset, {
+                            'GBR-2042' : 42,
+                            'GBR-2317' : 21,
+                            'GBR-2755' : 103
+                        });
+                    } else if (countryId == 'BE') {
+                        return callback && callback(countryId,provinceId, dataset, {
+                            'BEL-3479' : 108,
+                            'BEL-3478' : 209,
+                            'BEL-2' : 699
+                        });
+                    } else if (type=='country' && countryId == 'US') {
+                        return callback && callback(countryId,provinceId, dataset, {
+                            'USA-3521' : 108
+                        });
+                    } else if (type=='province' && provinceId == 'USA-3521') {
+                        return callback && callback(countryId,provinceId, dataset, {
+                            '06075' : 108,
+                            '06081' : 209,
+                            '06087' : 699
+                        });
+                    } else if (countryId == null) {
+                        return callback && callback(countryId,provinceId, dataset, {
+                            'GB' : 50,
+                            'US' : 209,
+                            'BE' : 699
+                        });
                     } else {
-                        return callback && callback(countryId,provinceId, dataset, null);
+                        return callback && callback(countryId,provinceId,dataset,null);
                     }
                 },0);
             });
 
-    var svg = d3.select("body").append("svg").call(map);
-
-    d3.select(self.frameElement).style("height", height + "px");
-
+    var svg = d3.select("svg").call(map);
 
     d3.select('#chooser').on('change',function() {
          var target = d3.event.target;

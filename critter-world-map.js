@@ -14,6 +14,7 @@ function worldmap() {
     var width = 960,
         height = 640,
         svg,map,key,
+        zoomDisabled = false,
         zoomDataLoader = null,
         zoomDataPreloader = null,
         keyTitle = '',
@@ -96,7 +97,12 @@ function worldmap() {
             .classed('cboundary',true)
             .attr("d", path).style('pointer-events','none');
 
-        map.on("click", zoomRouter).on('touchstart',detectDoubleTap).on("mousemove", mouseOverRegion).on("mouseout", mouseOutRegion);
+        if (!zoomDisabled) {
+            map.on("click", zoomRouter).on('touchstart',detectDoubleTap);
+        } else {
+            map.selectAll(".country").style('cursor','auto');
+        }
+        map.on("mousemove", mouseOverRegion).on("mouseout", mouseOutRegion);
 
         IE && fixLineWidths();
 
@@ -923,6 +929,11 @@ function worldmap() {
 
     my.onZoom = function(f) {
         onZoom = f;
+        return my;
+    };
+
+    my.zoomDisabled = function() {
+        zoomDisabled = true;
         return my;
     };
 

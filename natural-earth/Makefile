@@ -8,7 +8,7 @@ node_modules:
 counties: node_modules
 	mkdir -p shp/counties
 	mkdir -p topojson/counties
-	cp -r node_modules/us-atlas/shp/* shp/counties
+	# cp -r node_modules/us-atlas/shp/* shp/counties
 	# generate topojson for each us state
 	for STATE in `ls shp/counties/`; do \
 		echo $${STATE}; \

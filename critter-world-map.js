@@ -13,10 +13,12 @@
 function worldmap() {
     var width = 960,
         height = 640,
+        mapId = '',
         svg,map,key,
         zoomDisabled = false,
         zoomDataLoader = null,
         zoomDataPreloader = null,
+        onFinishedLoading = null,
         keyTitle = '',
         toolTipTitle = '',
         toolTipColor = '#999',
@@ -69,6 +71,11 @@ function worldmap() {
 
     function renderWorld() {
         var w = globalZoom.topojson;
+
+        if(mapId == '') {
+          mapId = 'body';
+        }
+
         map = svg.append('g').classed('map',true);
 
         renderKeyArea();
@@ -109,6 +116,10 @@ function worldmap() {
         renderLoadingAnimation();
         zoomDataLoader && zoomDataLoader('world',null,null,dataset,'Global',populateGlobalData.bind(this));
         my.deepLink();
+
+        if(onFinishedLoading != null && typeof onFinishedLoading == 'function') {
+          onFinishedLoading();
+        }
     }
 
     function detectDoubleTap() {
@@ -280,7 +291,7 @@ function worldmap() {
 
             // disable mouseover events for the selected province, (but not
             // neighbouring countries).
-            d3.selectAll('.country').style('pointer-events', function (d) {
+            d3.select(mapId).selectAll('.country').style('pointer-events', function (d) {
                 return d.properties.iso_a2 == iso_a2 ? 'none' : 'all';
             });
 
@@ -349,10 +360,10 @@ function worldmap() {
 
             // disable mouseover events for the selected province, (but not
             // neighbouring countries).
-            d3.selectAll('.country').style('pointer-events', function (d) {
+            d3.select(mapId).selectAll('.country').style('pointer-events', function (d) {
                 return d.properties.iso_a2 == currentCountryId ? 'none' : 'all';
             });
-            d3.selectAll('.province').style('pointer-events', function (d) {
+            d3.select(mapId).selectAll('.province').style('pointer-events', function (d) {
                 return d.properties.adm1_code == adm1_code ? 'none' : 'all';
             });
 
@@ -757,7 +768,7 @@ function worldmap() {
 
 
     function showMinusButton() {
-        d3.selectAll('.minus').remove();
+        d3.select(mapId).selectAll('.minus').remove();
         var minus = svg.append('g').attr('class','minus');
         minus.append('rect').attr('class','box').attr('x',15).attr('y',45).attr('width',18).attr('height',18);
         minus.append('rect').attr('class','sign').attr('x',20).attr('y',52).attr('width',9).attr('height',4);
@@ -770,7 +781,7 @@ function worldmap() {
     }
 
     function hideMinusButton() {
-        d3.selectAll('.minus').remove();
+        d3.select(mapId).selectAll('.minus').remove();
     }
 
     function renderKeyArea() {
@@ -789,7 +800,10 @@ function worldmap() {
         } else {
             n = ((d[1] - d[0])/r.length).toFixed(1);
         }
-        var key = d3.select('.key');
+
+        //var key = d3.select('.key');
+        var key = d3.select(mapId).select('.key');
+
         key.selectAll('.keyContainer').remove();
         var container = key.append('g').attr('transform','translate(15 0)').attr('class','keyContainer');
         for (i = 0; i < l; i++) {
@@ -809,7 +823,7 @@ function worldmap() {
         var d = quantize.domain(),
             r = quantize.range(),
             l  = r.length, kw = 125;
-        var key = d3.select('.key');
+        var key = d3.select(mapId).select('.key');
         key.selectAll('.keyContainer').remove();
         var container = key.append('g').attr('transform','translate(15 0)').attr('class','keyContainer');
         container.append('text').attr('class','keyTitle').attr('x',0).attr('y',15).text(keyTitle).attr('dy','1em');
@@ -822,7 +836,7 @@ function worldmap() {
         var speed = 4,
             start = Date.now();
 
-        var key = d3.select('.key');
+        var key = d3.select(mapId).select('.key');
         key.selectAll('.keyContainer').remove();
         var container = key.append('g').attr('transform','translate(15 0)').attr('class','keyContainer');
         container.append('text').attr('class','keyTitle').attr('x',0).attr('y',15).text(keyTitle).attr('dy','1em');
@@ -1033,6 +1047,17 @@ function worldmap() {
         else {
             return null; //world
         }
+    }
+
+    my.onFinishedLoading = function (callback) {
+      onFinishedLoading = callback;
+      DEVMODE && console.log('onFinishedLoading()');
+      return my;
+    }
+
+    my.mapId = function(mid) {
+      mapId = '#' + mid;
+      return my;
     }
 
     /**
